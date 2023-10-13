@@ -96,8 +96,8 @@
         >
             <div class="stat">
                 <div class="stat-title">All Testimonials</div>
-                <div class="stat-value">423</div>
-                <div class="stat-desc">21% more than last month</div>
+                <div class="stat-value">{{$total}}</div>
+                {{-- <div class="stat-desc">21% more than last month</div> --}}
             </div>
         </div>
 
@@ -106,8 +106,8 @@
         >
             <div class="stat">
                 <div class="stat-title">Accepted Testimonials</div>
-                <div class="stat-value">390</div>
-                <div class="stat-desc">21% more than last month</div>
+                <div class="stat-value">{{$accepted}}</div>
+                {{-- <div class="stat-desc">21% more than last month</div> --}}
             </div>
         </div>
 
@@ -116,8 +116,8 @@
         >
             <div class="stat">
                 <div class="stat-title">Pending Testimonials</div>
-                <div class="stat-value">28</div>
-                <div class="stat-desc">21% more than last month</div>
+                <div class="stat-value">{{$pending}}</div>
+                {{-- <div class="stat-desc">21% more than last month</div> --}}
             </div>
         </div>
     </div>

@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('board_id');
             $table->string('full_name', 1024);
             $table->string('email', 1024)->nullable();
             $table->text('testimonial');
             $table->string('status')->default('pending');
             $table->timestamps();
+
+            $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
         });
     }
 
