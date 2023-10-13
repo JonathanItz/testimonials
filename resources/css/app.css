@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.last-li:last-of-type ._rounded-bl {
+    border-radius: 0 0 0 0.375rem;
+}
+
+.last-li:last-of-type ._rounded-br {
+    border-radius: 0 0 0.375rem 0;
+}
