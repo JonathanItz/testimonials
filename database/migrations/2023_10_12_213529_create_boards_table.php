@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 1024);
             $table->string('slug', 1024);
+            $table->string('unique_id', 10);
             $table->unsignedBigInteger('user_id');
             $table->string('status')->default('active');
             $table->json('settings')->nullable();

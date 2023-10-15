@@ -30,12 +30,21 @@ Route::view('profile', 'profile')
 // ->middleware(['auth'])
 // ->name('board.create');
 
-Route::get('/board/{board:slug}', function(Board $board) {
+Route::get('/board/{unique_id}/{slug}', function($id, $slug) {
+
+    $board = Board::where('unique_id', $id)
+        ->where('slug', $slug)
+        ->firstOrFail();
+
     return view('boards.board');
 })
 ->name('board');
 
-Route::get('/form/{board:slug}', function(Board $board) {
+Route::get('/form/{unique_id}/{slug}', function($id, $slug) {
+    $board = Board::where('unique_id', $id)
+        ->where('slug', $slug)
+        ->firstOrFail();
+
     return view('boards.form');
 })
 ->name('board.form');

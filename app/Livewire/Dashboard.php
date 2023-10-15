@@ -11,6 +11,8 @@ class Dashboard extends Component
 
     public $slug;
 
+    public $uniqueId;
+
     public $total = 0;
     public $accepted = 0;
     public $pending = 0;
@@ -26,6 +28,7 @@ class Dashboard extends Component
         
         $this->name = $board->name;
         $this->slug = $board->slug;
+        $this->uniqueId = $board->unique_id;
         $this->total = $testimonials->count();
         $this->accepted = $accepted->count();
         $this->pending = $pending->count();

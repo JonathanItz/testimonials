@@ -18,6 +18,8 @@ new #[Layout('layouts.guest')] class extends Component
 
     public string $board = '';
 
+    public string $randomString;
+
     public string $password = '';
 
     public string $password_confirmation = '';
@@ -40,6 +42,7 @@ new #[Layout('layouts.guest')] class extends Component
         $board = new Board;
         $board->name = $this->board;
         $board->slug = Str::slug($this->board);
+        $board->unique_id = random_int(100000,999999);
         $board->user_id = $user->id;
         $board->save();
 

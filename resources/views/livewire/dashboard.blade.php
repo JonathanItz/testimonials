@@ -10,17 +10,17 @@
                     </div>
                     <div>
                         <a
-                        href="{{route('board', [$slug])}}"
+                        href="{{route('board', [$uniqueId, $slug])}}"
                         wire:navigate
                         class="text-lg font-medium"
                         >
-                            {{route('board', [$slug])}}
+                            {{route('board', [$uniqueId, $slug])}}
                         </a>
                     </div>
 
                     <div class="flex gap-4 mt-2">
                         <a
-                        href="{{route('board', [$slug])}}"
+                        href="{{route('board', [$uniqueId, $slug])}}"
                         target="_blank"
                         class="inline-block bg-primary p-2 rounded-full text-white"
                         >
@@ -33,7 +33,7 @@
                             <button
                             class="flex items-center bg-secondary p-2 rounded-full text-white"
                             type="button"
-                            x-on:click="copy('{{route('board', [$slug])}}');show($refs.boardCopied)"
+                            x-on:click="copy('{{route('board', [$uniqueId, $slug])}}');show($refs.boardCopied)"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
@@ -53,17 +53,17 @@
                     </div>
                     <div>
                         <a
-                        href="{{route('board.form', [$slug])}}"
+                        href="{{route('board.form', [$uniqueId, $slug])}}"
                         wire:navigate
                         class="text-lg font-medium"
                         >
-                            {{route('board.form', [$slug])}}
+                            {{route('board.form', [$uniqueId, $slug])}}
                         </a>
                     </div>
 
                     <div class="flex gap-4 mt-2">
                         <a
-                        href="{{route('board.form', [$slug])}}"
+                        href="{{route('board.form', [$uniqueId, $slug])}}"
                         target="_blank"
                         class="inline-block bg-primary p-2 rounded-full text-white"
                         >
@@ -76,7 +76,7 @@
                             <button
                             class="flex items-center bg-secondary p-2 rounded-full text-white"
                             type="button"
-                            x-on:click="copy('{{route('board.form', [$slug])}}');show($refs.formCopied)"
+                            x-on:click="copy('{{route('board.form', [$uniqueId, $slug])}}');show($refs.formCopied)"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
@@ -122,86 +122,124 @@
         </div>
     </div>
 
-    <div>
-        <div class="mt-8 flow-root">
-            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <table class="min-w-full divide-y divide-gray-300">
-                    <thead>
-                    <tr>
-                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-                        <a href="#" class="group inline-flex">
-                            Name
-                            <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
-                            <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
-                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                            </span>
-                        </a>
-                        </th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                        <a href="#" class="group inline-flex">
-                            Title
-                            <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
-                            <span class="ml-2 flex-none rounded bg-gray-100 text-gray-900 group-hover:bg-gray-200">
-                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                            </span>
-                        </a>
-                        </th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                        <a href="#" class="group inline-flex">
-                            Email
-                            <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
-                            <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
-                            <svg class="invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                            </span>
-                        </a>
-                        </th>
-                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                        <a href="#" class="group inline-flex">
-                            Role
-                            <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
-                            <span class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
-                            <svg class="invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                            </span>
-                        </a>
-                        </th>
-                        <th scope="col" class="relative py-3.5 pl-3 pr-0">
-                        <span class="sr-only">Edit</span>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200 bg-white shadow-md rounded-b-md">
-                        <tr class="last-li">
-                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 _rounded-bl">Lindsay Walton</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Front-end Developer</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay.walton@example.com</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Member</td>
-                            <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm _rounded-br">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                            </td>
-                        </tr>
-
-                        <tr class="last-li">
-                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 _rounded-bl">Lindsay Walton</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Front-end Developer</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">lindsay.walton@example.com</td>
-                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Member</td>
-                            <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm _rounded-br">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
+    <div class="mt-12">
+        <div class="card w-full shadow-md bg-white">
+            <div class="card-body">
+                <ul role="list" class="divide-y divide-white/5">
+                    <li class="relative flex items-center space-x-4 py-4">
+                    <div class="min-w-0 flex-auto">
+                        <div class="flex items-center gap-x-3">
+                        <div class="flex-none rounded-full p-1 text-gray-500 bg-gray-100/10">
+                            <div class="h-2 w-2 rounded-full bg-current"></div>
+                        </div>
+                        <h2 class="min-w-0 text-sm font-semibold leading-6 text-black">
+                            <a href="#" class="flex gap-x-2">
+                            <span class="truncate">John Doe</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="whitespace-nowrap">ios-app</span>
+                            <span class="absolute inset-0"></span>
+                            </a>
+                        </h2>
+                        </div>
+                        <div class="mt-3 flex items-center gap-x-2.5 text-xs leading-5 text-gray-400">
+                        <p class="truncate">Deploys from GitHub</p>
+                        <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none fill-gray-300">
+                            <circle cx="1" cy="1" r="1" />
+                        </svg>
+                        <p class="whitespace-nowrap">Initiated 1m 32s ago</p>
+                        </div>
+                    </div>
+                    <div class="rounded-full flex-none py-1 px-2 text-xs font-medium ring-1 ring-inset text-emerald-400 bg-emerald-400/10 ring-emerald-400/20">Active</div>
+                    <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                    </svg>
+                    </li>
+                    <li class="relative flex items-center space-x-4 py-4">
+                    <div class="min-w-0 flex-auto">
+                        <div class="flex items-center gap-x-3">
+                        <div class="flex-none rounded-full p-1 text-green-400 bg-green-400/10">
+                            <div class="h-2 w-2 rounded-full bg-current"></div>
+                        </div>
+                        <h2 class="min-w-0 text-sm font-semibold leading-6 text-black">
+                            <a href="#" class="flex gap-x-2">
+                            <span class="truncate">John Doe</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="whitespace-nowrap">mobile-api</span>
+                            <span class="absolute inset-0"></span>
+                            </a>
+                        </h2>
+                        </div>
+                        <div class="mt-3 flex items-center gap-x-2.5 text-xs leading-5 text-gray-400">
+                        <p class="truncate">Deploys from GitHub</p>
+                        <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none fill-gray-300">
+                            <circle cx="1" cy="1" r="1" />
+                        </svg>
+                        <p class="whitespace-nowrap">Deployed 3m ago</p>
+                        </div>
+                    </div>
+                    <div class="rounded-full flex-none py-1 px-2 text-xs font-medium ring-1 ring-inset text-red-400 bg-red-400/10 ring-red-400/30">Declined</div>
+                    <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                    </svg>
+                    </li>
+                    <li class="relative flex items-center space-x-4 py-4">
+                    <div class="min-w-0 flex-auto">
+                        <div class="flex items-center gap-x-3">
+                        <div class="flex-none rounded-full p-1 text-gray-500 bg-gray-100/10">
+                            <div class="h-2 w-2 rounded-full bg-current"></div>
+                        </div>
+                        <h2 class="min-w-0 text-sm font-semibold leading-6 text-black">
+                            <a href="#" class="flex gap-x-2">
+                            <span class="truncate">Tailwind Labs</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="whitespace-nowrap">tailwindcss.com</span>
+                            <span class="absolute inset-0"></span>
+                            </a>
+                        </h2>
+                        </div>
+                        <div class="mt-3 flex items-center gap-x-2.5 text-xs leading-5 text-gray-400">
+                        <p class="truncate">Deploys from GitHub</p>
+                        <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none fill-gray-300">
+                            <circle cx="1" cy="1" r="1" />
+                        </svg>
+                        <p class="whitespace-nowrap">Deployed 3h ago</p>
+                        </div>
+                    </div>
+                    <div class="rounded-full flex-none py-1 px-2 text-xs font-medium ring-1 ring-inset text-emerald-400 bg-emerald-400/10 ring-emerald-400/20">Active</div>
+                    <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                    </svg>
+                    </li>
+                    <li class="relative flex items-center space-x-4 py-4">
+                    <div class="min-w-0 flex-auto">
+                        <div class="flex items-center gap-x-3">
+                        <div class="flex-none rounded-full p-1 text-rose-400 bg-rose-400/10">
+                            <div class="h-2 w-2 rounded-full bg-current"></div>
+                        </div>
+                        <h2 class="min-w-0 text-sm font-semibold leading-6 text-black">
+                            <a href="#" class="flex gap-x-2">
+                            <span class="truncate">Protocol</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="whitespace-nowrap">api.protocol.chat</span>
+                            <span class="absolute inset-0"></span>
+                            </a>
+                        </h2>
+                        </div>
+                        <div class="mt-3 flex items-center gap-x-2.5 text-xs leading-5 text-gray-400">
+                        <p class="truncate">Deploys from GitHub</p>
+                        <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none fill-gray-300">
+                            <circle cx="1" cy="1" r="1" />
+                        </svg>
+                        <p class="whitespace-nowrap">Failed to deploy 6d ago</p>
+                        </div>
+                    </div>
+                    <div class="rounded-full flex-none py-1 px-2 text-xs font-medium ring-1 ring-inset text-emerald-400 bg-emerald-400/10 ring-emerald-400/20">Active</div>
+                    <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                    </svg>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </div>          
     </div>
 </div>
