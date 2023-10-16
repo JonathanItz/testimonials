@@ -45,7 +45,9 @@ Route::get('/form/{unique_id}/{slug}', function($id, $slug) {
         ->where('slug', $slug)
         ->firstOrFail();
 
-    return view('boards.form');
+    return view('boards.form', [
+        'boardId' => $board->id
+    ]);
 })
 ->name('board.form');
 

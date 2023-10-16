@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('board_id');
-            $table->string('full_name', 1024);
-            $table->string('email', 1024)->nullable();
+            $table->string('full_name');
+            $table->string('website')->nullable();
+            $table->string('job_position')->nullable();
             $table->text('testimonial');
+            $table->string('email');
+            $table->boolean('tos_agreement');
             $table->string('status')->default('pending');
             $table->timestamps();
 

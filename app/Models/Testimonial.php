@@ -12,4 +12,14 @@ class Testimonial extends Model
     public function board() {
         return $this->belongsTo(Board::class);
     }
+
+    protected $fillable = [
+        'board_id',
+        'full_name',
+        'website',
+        'job_position',
+        'testimonial',
+        'email',
+        'tos_agreement'
+    ];
 }

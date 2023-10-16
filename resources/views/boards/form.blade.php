@@ -13,7 +13,7 @@
 
     <div class="py-20">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-            <livewire:boards.form />
+            <livewire:boards.form boardId="{{$boardId}}" />
         </div>
     </div>
 </x-board-layout>
