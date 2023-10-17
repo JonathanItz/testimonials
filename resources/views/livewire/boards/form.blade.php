@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit="submit" class="space-y-10 divide-y divide-gray-900/10">
+    <form id="step-1" wire:submit="submit" class="space-y-10 divide-y divide-gray-900/10 transition-opacity">
         <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
             <div class="px-4 sm:px-0">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">About You</h2>
@@ -85,7 +85,7 @@
                             </div>
                             <div class="text-sm leading-6">
                                 <label for="tos" class="font-medium text-gray-900">Terms of Service<span class="text-red-400">*</span></label>
-                                <p class="text-gray-500">I have read and agree to the <a href="#">terms of service</a>.</p>
+                                <p class="text-gray-500">I have read and agree to the <a href="#" class="text-primary">terms of service</a>.</p>
                             </div>
                         </div>
                     </div>
@@ -110,4 +110,15 @@
             </div>
         </div>
     </form>
+
+    <div id="step-2" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl px-4 py-6 sm:p-8" style="display:none">
+        <div class="text-center">
+            <h2 class="text-xl">Thank you for submitting your testimonial 🎉</h2>
+            <div class="mt-4">
+                <p class="text-gray-600 font-medium">Your submission is under review and could take a few days to be accepted.</p>
+
+                <a href="#" class="btn btn-primary btn-sm mt-8">Go back</a>
+            </div>
+        </div>
+    </div>
 </div>

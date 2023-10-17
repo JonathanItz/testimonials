@@ -2,14 +2,16 @@
 
 namespace App\Livewire\Boards;
 
-use App\Models\Testimonial;
 use Livewire\Component;
+use App\Models\Testimonial;
+use Livewire\Attributes\Locked;
 
 class Form extends Component
 {
+    #[Locked]
     public $boardId;
 
-    public string $fullName, $website, $jobPosition, $testimonial, $email;
+    public $fullName, $website, $jobPosition, $testimonial, $email;
     public bool $termsOfService;
 
     public function submit() {
@@ -32,7 +34,8 @@ class Form extends Component
             'tos_agreement' => true,
         ]);
 
-        dd($testimonail);
+        $this->js('nextStep(2)');
+        $this->reset();
     }
 
     public function render()
