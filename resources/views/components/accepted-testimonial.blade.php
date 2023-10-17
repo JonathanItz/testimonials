@@ -5,7 +5,7 @@
             <div class="h-2 w-2 rounded-full bg-current"></div>
         </div>
         <h2 class="min-w-0 text-sm font-semibold leading-6 text-black">
-            <a href="#" class="flex gap-x-2">
+            <a wire:navigate href="{{route('testimonial.edit', $testimonial->id)}}" class="flex gap-x-2">
                 <span class="truncate">{{$testimonial->full_name}}</span>
                 @if ($testimonial->job_position)
                     <span class="text-gray-400">/</span>
@@ -16,11 +16,11 @@
         </h2>
         </div>
         <div class="mt-3 inline-flex items-center gap-x-2.5 text-xs leading-5 text-gray-400">
-            <p class="truncate">{{$testimonial->email}}</p>
+            {{-- <p class="truncate">{{$testimonial->email}}</p> --}}
             @if ($testimonial->website)
-                <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none fill-gray-300">
+                {{-- <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none fill-gray-300">
                     <circle cx="1" cy="1" r="1" />
-                </svg>
+                </svg> --}}
                 <p class="whitespace-nowrap">{{$testimonial->website}}</p>
             @endif
         </div>

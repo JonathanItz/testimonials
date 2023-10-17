@@ -4,9 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Board;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Dashboard extends Component
 {
+    use WithPagination;
+
     public $name;
 
     public $slug;
@@ -19,14 +22,15 @@ class Dashboard extends Component
 
     public $pending = 0;
 
-    public $testimonials;
-
-    public function mount() {
+    public function render()
+    {
         $user = auth()?->user();
 
         $board = Board::where('user_id', $user->id)->first();
-        $testimonials = $board->testimonials->sortDesc();
-        $this->testimonials = $testimonials;
+        $testimonialsModal = $board->testimonials()->orderBy('created_at', 'desc');
+        $testimonials = $testimonialsModal->get();
+        $testimonialsPagination = $testimonialsModal->paginate(10);
+        // $testimonials = $board->testimonials->sortDesc();
 
         $accepted = $testimonials->filter(fn($testimonial) => $testimonial->status === 'accepted');
         $pending = $testimonials->filter(fn($testimonial) => $testimonial->status === 'pending');
@@ -37,10 +41,9 @@ class Dashboard extends Component
         $this->total = $testimonials->count();
         $this->accepted = $accepted->count();
         $this->pending = $pending->count();
-    }
 
-    public function render()
-    {
-        return view('livewire.dashboard');
+        return view('livewire.dashboard', [
+            'testimonials' => $testimonialsPagination
+        ]);
     }
 }

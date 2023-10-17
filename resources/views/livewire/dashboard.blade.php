@@ -138,6 +138,8 @@
                             @endif
                         @endforeach
                     </ul>
+
+                    {{ $testimonials->links() }}
                 @endif
             </div>
         </div>          

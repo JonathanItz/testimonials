@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Board;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,5 +51,10 @@ Route::get('/form/{unique_id}/{slug}', function($id, $slug) {
     ]);
 })
 ->name('board.form');
+
+Route::get('/testimonial/edit/{testimonial:id}', function(Testimonial $testimonial) {
+    return view('testimonials.edit');
+})
+->name('testimonial.edit');
 
 require __DIR__.'/auth.php';
