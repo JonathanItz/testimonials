@@ -23,11 +23,11 @@
                         <legend class="sr-only">Image to use</legend>
                         <div class="space-y-4">
                             <div class="flex items-center">
-                                <input id="initials" name="notification-method" type="radio" checked class="h-4 w-4 border-gray-300 text-primary focus:ring-primary">
+                                <input wire:model="avatar" value="{{$initialUrl}}" id="initials" type="radio" checked class="h-4 w-4 border-gray-300 text-primary focus:ring-primary">
                                 <label for="initials" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Initials</label>
                             </div>
                             <div class="flex items-center">
-                                <input id="gravitar" name="notification-method" type="radio" class="h-4 w-4 border-gray-300 text-primary focus:ring-primary">
+                                <input wire:model="avatar" value="{{$gravitarUrl}}" id="gravitar" type="radio" class="h-4 w-4 border-gray-300 text-primary focus:ring-primary">
                                 <label for="gravitar" class="ml-3 block text-sm font-medium leading-6 text-gray-900">Gravitar</label>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
 
                     <div class="mt-4">
                         <img
-                            x-bind:src="avatarUrl"
+                            x-bind:src="$wire.avatar"
                             alt="User profile picture"
                             class="rounded-full w-12"
                         >

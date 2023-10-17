@@ -24,10 +24,14 @@ class Edit extends Component
 
         $emailHash = md5($this->email);
 
-        $this->avatar = $this->testimonialModal->image_to_use;
-
-        $this->gravitarUrl = "https://www.gravatar.com/avatar/$emailHash";
         $this->initialUrl = "https://ui-avatars.com/api/?name=$this->fullName";
+        $this->gravitarUrl = "https://www.gravatar.com/avatar/$emailHash";
+
+        if($this->testimonialModal->image_to_use) {
+            $this->avatar = $this->testimonialModal->image_to_use;
+        } else {
+            $this->avatar = $this->initialUrl;
+        }
     }
 
     public function submit() {
