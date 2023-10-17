@@ -125,8 +125,8 @@
     <div class="mt-12">
         <div class="card w-full shadow-md bg-white">
             <div class="card-body">
-                @if ($testimonials)
-                {{-- {{dd($testimonials)}} --}}
+                @if (!$testimonials->isEmpty())
+                    {{-- {{dd($testimonials)}} --}}
                     <ul role="list" class="divide-y divide-white/5">
                         @foreach ($testimonials as $testimonial)
                             @if ($testimonial->status === 'pending')
@@ -140,6 +140,8 @@
                     </ul>
 
                     {{ $testimonials->links() }}
+                @else
+                    No testimonials found
                 @endif
             </div>
         </div>          

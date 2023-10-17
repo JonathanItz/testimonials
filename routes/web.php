@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')
+    ->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified', 'hasboard'])
@@ -53,7 +54,17 @@ Route::get('/form/{unique_id}/{slug}', function($id, $slug) {
 ->name('board.form');
 
 Route::get('/testimonial/edit/{testimonial:id}', function(Testimonial $testimonial) {
-    return view('testimonials.edit');
+    $board = $testimonial->board()->first();
+    $user = auth()->user();
+    $userId = $user->id;
+
+    if($userId !== $board->id) {
+        return abort(404);
+    }
+
+    return view('testimonials.edit', [
+        'testimonial' => $testimonial
+    ]);
 })
 ->name('testimonial.edit');
 

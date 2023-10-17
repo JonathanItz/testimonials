@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('website')->nullable();
             $table->string('job_position')->nullable();
             $table->text('testimonial');
+            $table->string('image_to_use')->default('initials');
             $table->string('email');
             $table->boolean('tos_agreement');
             $table->string('status')->default('pending');
