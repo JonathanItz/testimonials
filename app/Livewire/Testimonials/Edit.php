@@ -2,17 +2,36 @@
 
 namespace App\Livewire\Testimonials;
 
+use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 class Edit extends Component
 {
+
+    #[Locked]
     public $testimonialModal;
 
-    public $fullName, $website, $jobPosition, $testimonial, $email;
+    public $fullName, $website, $jobPosition, $testimonial, $email, $status, $gravitarUrl, $initialUrl, $avatar;
 
 
     public function mount() {
         $this->fullName = $this->testimonialModal->full_name;
+        $this->website = $this->testimonialModal->website;
+        $this->jobPosition = $this->testimonialModal->job_position;
+        $this->testimonial = $this->testimonialModal->testimonial;
+        $this->email = $this->testimonialModal->email;
+        $this->status = $this->testimonialModal->status;
+
+        $emailHash = md5($this->email);
+
+        $this->avatar = $this->testimonialModal->image_to_use;
+
+        $this->gravitarUrl = "https://www.gravatar.com/avatar/$emailHash";
+        $this->initialUrl = "https://ui-avatars.com/api/?name=$this->fullName";
+    }
+
+    public function submit() {
+        dd($this);
     }
 
     public function render()
