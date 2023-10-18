@@ -66,6 +66,7 @@ Route::get('/testimonial/edit/{testimonial:id}', function(Testimonial $testimoni
         'testimonial' => $testimonial
     ]);
 })
+->middleware(['auth'])
 ->name('testimonial.edit');
 
 require __DIR__.'/auth.php';

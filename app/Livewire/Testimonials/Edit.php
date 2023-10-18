@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Testimonials;
 
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
@@ -11,7 +12,7 @@ class Edit extends Component
     #[Locked]
     public $testimonialModal;
 
-    public $fullName, $website, $jobPosition, $testimonial, $email, $status, $gravitarUrl, $initialUrl, $avatar;
+    public $fullName, $website, $jobPosition, $testimonial, $email, $status, $gravitarUrl, $initialsUrl, $avatar;
 
 
     public function mount() {
@@ -24,18 +25,41 @@ class Edit extends Component
 
         $emailHash = md5($this->email);
 
-        $this->initialUrl = "https://ui-avatars.com/api/?name=$this->fullName";
+        $fullName = rawurlencode("$this->fullName");
+
+        $this->initialsUrl = "https://ui-avatars.com/api/?name=$fullName";
         $this->gravitarUrl = "https://www.gravatar.com/avatar/$emailHash";
 
         if($this->testimonialModal->image_to_use) {
             $this->avatar = $this->testimonialModal->image_to_use;
         } else {
-            $this->avatar = $this->initialUrl;
+            $this->avatar = $this->initialsUrl;
         }
     }
 
     public function submit() {
-        dd($this);
+        $this->validate([
+            'status' => ['required', Rule::in(['pending', 'accepted', 'declined'])],
+            'avatar' => [Rule::in([$this->initialsUrl, $this->gravitarUrl])]
+        ]);
+
+        $this->testimonialModal->status = $this->status;
+        $this->testimonialModal->image_to_use = $this->avatar;
+        $this->testimonialModal->save();
+
+        $this->js('
+            Toastify({
+                text: "Saved!",
+                duration: 3000,
+                close: true,
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "#66c2c8",
+                    borderRadius: "0.375rem"
+                },
+            }).showToast();
+        ');
+        // dd($this);
     }
 
     public function render()

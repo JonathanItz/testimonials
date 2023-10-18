@@ -1,4 +1,10 @@
 import './bootstrap';
+import Toastify from 'toastify-js'
+
+window.Toastify = Toastify
+
+import "toastify-js/src/toastify.css"
+
 
 window.copy = function(text) {
     navigator.clipboard.writeText(text)
