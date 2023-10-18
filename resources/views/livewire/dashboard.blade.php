@@ -123,9 +123,19 @@
     </div>
 
     <div class="mt-12">
-        <div class="card w-full shadow-md bg-white">
+        <div id="testimonials" class="card w-full shadow-md bg-white">
             <div class="card-body">
                 @if (!$testimonials->isEmpty())
+                    <div class="max-w-sm">
+                        <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
+                        <select wire:model.live="status" id="status" name="status" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-primary sm:text-sm sm:leading-6">
+                            <option value="">Show All</option>
+                            <option value="pending">Pending</option>
+                            <option value="accepted">Accepted</option>
+                            <option value="declined">Declined</option>
+                        </select>
+                    </div>
+
                     {{-- {{dd($testimonials)}} --}}
                     <ul role="list" class="divide-y divide-white/5">
                         @foreach ($testimonials as $testimonial)
@@ -139,7 +149,7 @@
                         @endforeach
                     </ul>
 
-                    {{ $testimonials->links() }}
+                    {{ $testimonials->links(data: ['scrollTo' => '#testimonials']) }}
                 @else
                     No testimonials found
                 @endif

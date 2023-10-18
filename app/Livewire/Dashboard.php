@@ -22,6 +22,8 @@ class Dashboard extends Component
 
     public $pending = 0;
 
+    public $status;
+
     public function render()
     {
         $user = auth()?->user();
@@ -29,7 +31,12 @@ class Dashboard extends Component
         $board = Board::where('user_id', $user->id)->first();
         $testimonialsModal = $board->testimonials()->orderBy('created_at', 'desc');
         $testimonials = $testimonialsModal->get();
-        $testimonialsPagination = $testimonialsModal->paginate(10);
+
+        if($this->status) {
+            $testimonialsModal->where('status', $this->status);
+        }
+
+        $testimonialsPagination = $testimonialsModal->paginate(1);
         // $testimonials = $board->testimonials->sortDesc();
 
         $accepted = $testimonials->filter(fn($testimonial) => $testimonial->status === 'accepted');

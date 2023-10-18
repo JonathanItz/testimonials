@@ -22,7 +22,7 @@
             @if (isset($header))
                 <header class="mt-4">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        <div class="bg-white py-4 px-6 rounded-xl shadow-md">
+                        <div class="">
                             {{ $header }}
                         </div>
                     </div>
