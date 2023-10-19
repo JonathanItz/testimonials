@@ -33,12 +33,15 @@ Route::view('profile', 'profile')
 // ->name('board.create');
 
 Route::get('/board/{unique_id}/{slug}', function($id, $slug) {
-
     $board = Board::where('unique_id', $id)
         ->where('slug', $slug)
         ->firstOrFail();
 
-    return view('boards.board');
+    $testimonails = $board->testimonials()->where('status', 'accepted')->get();
+
+    return view('boards.board', [
+        'testimonails' => $testimonails
+    ]);
 })
 ->name('board');
 
