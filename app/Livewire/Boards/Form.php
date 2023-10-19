@@ -11,13 +11,13 @@ class Form extends Component
     #[Locked]
     public $boardId;
 
-    public $fullName, $website, $jobPosition, $testimonial, $email;
+    public $fullName, $company, $jobPosition, $testimonial, $email;
     public bool $termsOfService;
 
     public function submit() {
         $this->validate([
             'fullName' => ['required', 'string', 'max:255'],
-            'website' => ['nullable', 'string', 'max:255'],
+            'company' => ['nullable', 'string', 'max:255'],
             'jobPosition' => ['nullable', 'string', 'max:255'],
             'testimonial' => ['required', 'string', 'max:5000'],
             'email' => ['required', 'string', 'email', 'max:255'],
@@ -27,7 +27,7 @@ class Form extends Component
         $testimonail = Testimonial::create([
             'board_id' => $this->boardId,
             'full_name' => $this->fullName,
-            'website' => $this->website,
+            'company' => $this->company,
             'job_position' => $this->jobPosition,
             'testimonial' => $this->testimonial,
             'email' => $this->email,

@@ -37,7 +37,6 @@ class Dashboard extends Component
         }
 
         $testimonialsPagination = $testimonialsModal->paginate(10);
-        // $testimonials = $board->testimonials->sortDesc();
 
         $accepted = $testimonials->filter(fn($testimonial) => $testimonial->status === 'accepted');
         $pending = $testimonials->filter(fn($testimonial) => $testimonial->status === 'pending');

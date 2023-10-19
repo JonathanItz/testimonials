@@ -20,11 +20,10 @@
                         </div>
     
                         <div class="sm:col-span-4">
-                            <label for="website" class="block text-sm font-medium leading-6 text-gray-900">Website</label>
+                            <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Company Name</label>
                             <div class="mt-2">
                                 <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
-                                    <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">https://</span>
-                                    <input wire:model="website" autocomplete="url" type="text" name="website" id="website" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="www.example.com">
+                                    <input wire:model="company" autocomplete="name" type="text" name="company" id="company" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Your Company">
                                 </div>
                             </div>
                         </div>
@@ -117,7 +116,7 @@
             <div class="mt-4">
                 <p class="text-gray-600 font-medium">Your submission is under review and could take a few days to be accepted.</p>
 
-                <a href="#" class="btn btn-primary btn-sm mt-8">Go back</a>
+                <a href="{{url()->full()}}" wire:navigate class="btn btn-primary btn-sm mt-8">Go back</a>
             </div>
         </div>
     </div>

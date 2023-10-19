@@ -20,7 +20,6 @@ window.show = function(el, duration = 1000) {
 }
 
 window.nextStep = function(step = 2) {
-    console.log('yaya');
     let prevStep = step - 1
     let prevStepEl = document.getElementById(`step-${prevStep}`)
     let nextStepEl = document.getElementById(`step-${step}`)

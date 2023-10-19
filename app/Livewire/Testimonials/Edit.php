@@ -12,12 +12,12 @@ class Edit extends Component
     #[Locked]
     public $testimonialModal;
 
-    public $fullName, $website, $jobPosition, $testimonial, $email, $status, $gravitarUrl, $initialsUrl, $avatar;
+    public $fullName, $company, $jobPosition, $testimonial, $email, $status, $gravitarUrl, $initialsUrl, $avatar;
 
 
     public function mount() {
         $this->fullName = $this->testimonialModal->full_name;
-        $this->website = $this->testimonialModal->website;
+        $this->company = $this->testimonialModal->company;
         $this->jobPosition = $this->testimonialModal->job_position;
         $this->testimonial = $this->testimonialModal->testimonial;
         $this->email = $this->testimonialModal->email;

@@ -17,11 +17,11 @@
         </div>
         <div class="mt-3 inline-flex items-center gap-x-2.5 text-xs leading-5 text-gray-400">
             {{-- <p class="truncate">{{$testimonial->email}}</p> --}}
-            @if ($testimonial->website)
+            @if ($testimonial->company)
                 {{-- <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 flex-none fill-gray-300">
                     <circle cx="1" cy="1" r="1" />
                 </svg> --}}
-                <p class="whitespace-nowrap">{{$testimonial->website}}</p>
+                <p class="whitespace-nowrap">{{$testimonial->company}}</p>
             @endif
         </div>
     </div>

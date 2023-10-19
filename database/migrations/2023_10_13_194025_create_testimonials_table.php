@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('board_id');
             $table->string('full_name');
-            $table->string('website')->nullable();
+            $table->string('company')->nullable();
             $table->string('job_position')->nullable();
             $table->text('testimonial');
             $table->string('image_to_use')->nullable();
