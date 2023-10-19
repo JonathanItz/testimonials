@@ -1,10 +1,11 @@
 import './bootstrap';
 import Toastify from 'toastify-js'
+import Masonry from 'masonry-layout'
 
 window.Toastify = Toastify
+window.Masonry = Masonry
 
 import "toastify-js/src/toastify.css"
-
 
 window.copy = function(text) {
     navigator.clipboard.writeText(text)

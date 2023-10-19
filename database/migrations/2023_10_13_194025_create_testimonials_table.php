@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('company')->nullable();
             $table->string('job_position')->nullable();
-            $table->text('testimonial');
+            $table->string('testimonial', 1024);
             $table->string('image_to_use')->nullable();
             $table->string('email');
             $table->boolean('tos_agreement');

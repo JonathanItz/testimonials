@@ -19,7 +19,7 @@ class Form extends Component
             'fullName' => ['required', 'string', 'max:255'],
             'company' => ['nullable', 'string', 'max:255'],
             'jobPosition' => ['nullable', 'string', 'max:255'],
-            'testimonial' => ['required', 'string', 'max:5000'],
+            'testimonial' => ['required', 'string', 'max:1000'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'termsOfService' => ['required', 'accepted'],
         ]);

@@ -16,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "masonry-layout": "^4.2.2",
         "tinymce": "^6.7.0",
         "toastify-js": "^1.12.0"
     }

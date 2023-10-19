@@ -6,11 +6,19 @@
     </x-slot> --}}
 
     <div class="py-12">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             @if (! $testimonails->isEmpty())
-                <div class="grid grid-cols-3 gap-6">
+                <div
+                    id="grid-container"
+                    class="-mx-3"
+                    x-init="
+                        msnry = new Masonry( $el, {
+
+                        });
+                    "
+                >
                     @foreach ($testimonails as $testimonail)
-                        <div class="bg-white rounded-xl shadow-md px-6 py-4">
+                        <div class="w-[calc(33.3%-1.5rem)] bg-white rounded-xl shadow-md p-4 m-3">
                             <div class="flex gap-4">
                                 <div class="shrink-0">
                                     <img
@@ -21,12 +29,12 @@
                                 </div>
     
                                 <div class="w-full">
-                                    <h3 class="font-semibold line-clamp-2">
+                                    <h3 class="font-semibold line-clamp-2 text-lg">
                                         {{$testimonail->full_name}}
                                     </h3>
     
                                     @if ($testimonail->job_position || $testimonail->company)
-                                        <div class="text-sm font-medium flex items-center gap-2 mt-2 text-gray-600">
+                                        <div class="text-sm font-medium flex items-center gap-2 text-gray-600">
                                             <span>
                                                 {{$testimonail->job_position}}
                                             </span>
@@ -36,6 +44,12 @@
                                             </span>
                                         </div>
                                     @endif
+
+                                    <div class="mt-4">
+                                        <p>
+                                            {{$testimonail->testimonial}}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

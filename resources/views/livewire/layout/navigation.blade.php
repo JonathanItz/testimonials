@@ -15,10 +15,10 @@ new class extends Component
     }
 }; ?>
 
-<nav x-data="{ open: false }" class="">
+<nav x-data="{ open: false }" class="border-b border-slate-200">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-        <div class="bg-white border-b border-gray-100 rounded-xl shadow-md px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="px-6">
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <!-- Logo -->
@@ -43,7 +43,7 @@ new class extends Component
                     @auth
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
-                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 shadow">
                                     <div x-data="{ name: '{{ auth()->user()->name }}' }" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
     
                                     <div class="ml-1">

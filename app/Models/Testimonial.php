@@ -16,7 +16,7 @@ class Testimonial extends Model
     protected $fillable = [
         'board_id',
         'full_name',
-        'website',
+        'company',
         'job_position',
         'testimonial',
         'email',

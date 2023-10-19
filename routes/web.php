@@ -37,7 +37,7 @@ Route::get('/board/{unique_id}/{slug}', function($id, $slug) {
         ->where('slug', $slug)
         ->firstOrFail();
 
-    $testimonails = $board->testimonials()->where('status', 'accepted')->get();
+    $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
 
     return view('boards.board', [
         'testimonails' => $testimonails
