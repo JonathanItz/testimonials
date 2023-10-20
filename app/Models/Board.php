@@ -18,4 +18,8 @@ class Board extends Model
     public function testimonials() {
         return $this->hasMany(Testimonial::class);
     }
+
+    protected $casts = [
+        'settings' => 'array'
+    ];
 }

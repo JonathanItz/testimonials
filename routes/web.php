@@ -80,12 +80,12 @@ Route::get('/settings/{unique_id}/{slug}', function($id, $slug) {
         ->where('slug', $slug)
         ->firstOrFail();
 
-    if($userId !== $board->id) {
+    if($userId !== $board->user_id) {
         return abort(404);
     }
 
-    return view('testimonials.settings', [
-        // 'testimonial' => $testimonial
+    return view('boards.settings', [
+        'board' => $board
     ]);
 })
 ->middleware(['auth'])

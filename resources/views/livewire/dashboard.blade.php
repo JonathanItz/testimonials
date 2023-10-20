@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <div class="flex justify-between">
+        <div class="flex justify-between flex-col md:flex-row gap-2">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ $name }} board
             </h2>
