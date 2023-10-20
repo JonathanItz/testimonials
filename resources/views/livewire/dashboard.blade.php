@@ -3,14 +3,14 @@
         <div class="card-body">
             <div class="flex flex-col md:flex-row w-full">
                 <div class="w-full">
-                    <div class="text-xs font-medium text-gray-500">
+                    <div class="text-gray-500 font-medium text-xs">
                         Testimonial Board
                     </div>
                     <div>
                         <a
                         href="{{route('board', [$uniqueId, $slug])}}"
                         wire:navigate
-                        class="text-lg font-medium"
+                        class="text-lg font-medium line-clamp-1"
                         >
                             {{route('board', [$uniqueId, $slug])}}
                         </a>
@@ -46,14 +46,14 @@
                 <div class="divider divider-vertical md:hidden"></div>
 
                 <div class="w-full">
-                    <div class="text-xs font-medium text-gray-500">
+                    <div class="text-gray-500 font-medium text-xs">
                         Testimonial Form
                     </div>
                     <div>
                         <a
                         href="{{route('board.form', [$uniqueId, $slug])}}"
                         wire:navigate
-                        class="text-lg font-medium"
+                        class="text-lg font-medium line-clamp-1"
                         >
                             {{route('board.form', [$uniqueId, $slug])}}
                         </a>
@@ -88,64 +88,80 @@
         </div>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="grid grid-cols-3 md:gap-6 mt-8 bg-white md:bg-transparent rounded-xl shadow-md md:shadow-none">
+        @php
+            $cardClasses = 'p-6 rounded-xl text-left md:shadow-md md:bg-white w-full';
+        @endphp
         <div
-        class="p-6 rounded-xl text-left shadow-md transition-shadow bg-white w-full peer-checked:!shadow-inner peer-checked:!shadow-gray-300"
+        class="{{$cardClasses}}"
         >
             <div class="stat">
-                <div class="text-gray-500 font-medium">All Testimonials</div>
-                <div class="text-4xl font-black text-neutral">{{$total}}</div>
+                <div class="text-gray-500 font-medium text-xs">All Testimonials</div>
+                <div class="text-2xl md:text-4xl font-black text-neutral">{{$total}}</div>
                 {{-- <div class="text-xs font-medium text-gray-500">21% more than last month</div> --}}
             </div>
         </div>
 
         <div
-        class="p-6 rounded-xl text-left shadow-md transition-shadow bg-white w-full peer-checked:!shadow-inner peer-checked:!shadow-gray-300"
+        class="{{$cardClasses}}"
         >
             <div class="stat">
-                <div class="text-gray-500 font-medium">Accepted Testimonials</div>
-                <div class="text-4xl font-black text-neutral">{{$accepted}}</div>
+                <div class="text-gray-500 font-medium text-xs">Accepted Testimonials</div>
+                <div class="text-2xl md:text-4xl font-black text-neutral">{{$accepted}}</div>
                 {{-- <div class="text-xs font-medium text-gray-500">21% more than last month</div> --}}
             </div>
         </div>
 
         <div
-        class="p-6 rounded-xl text-left shadow-md transition-shadow bg-white w-full peer-checked:!shadow-inner peer-checked:!shadow-gray-300"
+        class="{{$cardClasses}}"
         >
             <div class="stat">
-                <div class="text-gray-500 font-medium">Pending Testimonials</div>
-                <div class="text-4xl font-black text-neutral">{{$pending}}</div>
+                <div class="text-gray-500 font-medium text-xs">Pending Testimonials</div>
+                <div class="text-2xl md:text-4xl font-black text-neutral">{{$pending}}</div>
                 {{-- <div class="text-xs font-medium text-gray-500">21% more than last month</div> --}}
             </div>
         </div>
     </div>
 
     <div class="mt-12 grid grid-cols-12 gap-6">
-        <div class="col-span-3 flex flex-col gap-2">
+        @php
+            $labelClasses = 'peer-checked:bg-neutral peer-checked:text-white hover:bg-gray-200 text-neutral transition-colors rounded-md px-3 py-1 flex justify-between cursor-pointer';
+        @endphp
+
+        <div class="col-span-4 lg:col-span-3 gap-2 hidden md:block space-y-2">
             <div class="w-full">
                 <input wire:model.live="status" value="" type="radio" class="hidden peer" id="all">
-                <label class="peer-checked:bg-neutral peer-checked:text-white hover:bg-gray-200 transition-colors rounded-md px-2 py-1 flex justify-between cursor-pointer" for="all"><span>All Testimonial</span> <span class="font-bold">{{$total}}</span></label>
+                <label class="{{$labelClasses}}" for="all">
+                    <span class="font-medium">Show All</span> <span class="font-black">{{$total}}</span>
+                </label>
             </div>
 
             <div class="w-full">
                 <input wire:model.live="status" value="accepted" type="radio" class="hidden peer" id="accepted">
-                <label class="peer-checked:bg-neutral peer-checked:text-white hover:bg-gray-200 transition-colors rounded-md px-2 py-1 flex justify-between cursor-pointer" for="accepted"><span>Accepted Testimonial</span> <span class="font-bold">{{$accepted}}</span></label>
+                <label class="{{$labelClasses}}" for="accepted">
+                    <span class="font-medium">Accepted</span> <span class="font-black">{{$accepted}}</span>
+                </label>
             </div>
 
             <div class="w-full">
                 <input wire:model.live="status" value="pending" type="radio" class="hidden peer" id="pending">
-                <label class="peer-checked:bg-neutral peer-checked:text-white hover:bg-gray-200 transition-colors rounded-md px-2 py-1 flex justify-between cursor-pointer" for="pending"><span>Pending Testimonial</span> <span class="font-bold">{{$pending}}</span></label>
+                <label class="{{$labelClasses}}" for="pending">
+                    <span class="font-medium">Pending</span> <span class="font-black">{{$pending}}</span>
+                </label>
             </div>
 
             <div class="w-full">
                 <input wire:model.live="status" value="declined" type="radio" class="hidden peer" id="declined">
-                <label class="peer-checked:bg-neutral peer-checked:text-white hover:bg-gray-200 transition-colors rounded-md px-2 py-1 flex justify-between cursor-pointer" for="declined"><span>Declined Testimonial</span> <span class="font-bold">{{$declined}}</span></label>
+                <label class="{{$labelClasses}}" for="declined">
+                    <span class="font-medium">Declined</span> <span class="font-black">{{$declined}}</span>
+                </label>
             </div>
         </div>
-        <div class="col-span-9">
+
+        <div class="col-span-12 md:col-span-8 lg:col-span-9">
             <div id="testimonials" class="p-6 rounded-xl w-full shadow-md bg-white">
                 <div class="card-body">
-                    {{-- <div class="max-w-sm mb-2">
+                    <div class="max-w-sm mb-2 md:hidden">
                         <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
                         <select wire:model.live="status" id="status" name="status" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-primary sm:text-sm sm:leading-6">
                             <option value="">Show All</option>
@@ -153,7 +169,7 @@
                             <option value="accepted">Accepted</option>
                             <option value="declined">Declined</option>
                         </select>
-                    </div> --}}
+                    </div>
                     @if (!$testimonials->isEmpty())
                         <ul role="list" class="divide-y divide-white/5">
                             @foreach ($testimonials as $testimonial)

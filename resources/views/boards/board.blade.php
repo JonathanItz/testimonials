@@ -34,11 +34,11 @@
                                     </h3>
     
                                     @if ($testimonail->job_position || $testimonail->company)
-                                        <div class="text-sm font-medium flex items-center gap-2 text-gray-600">
+                                        <div class="text-sm font-medium text-gray-600">
                                             <span>
                                                 {{$testimonail->job_position}}
                                             </span>
-                                            <span class="bg-gray-300 rounded-full h-0.5 w-0.5"></span>
+                                            <span class="bg-gray-600 inline-block rounded-full h-0.5 w-0.5 mx-1 relative -top-0.5"></span>
                                             <span>
                                                 {{$testimonail->company}}
                                             </span>
