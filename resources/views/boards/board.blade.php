@@ -18,7 +18,7 @@
                     "
                 >
                     @foreach ($testimonails as $testimonail)
-                        <div class="w-[calc(33.3%-1.5rem)] bg-white rounded-xl shadow-md p-4 m-3">
+                        <div class="w-[calc(33.3%-1.5rem)] bg-white rounded-xl shadow-md p-6 m-3">
                             <div class="flex gap-4">
                                 <div class="shrink-0">
                                     <img
