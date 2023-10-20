@@ -1,7 +1,7 @@
 <div>
     <div class="p-6 rounded-xl w-full shadow-md bg-white">
         <div class="card-body">
-            <div class="flex flex-col md:flex-row w-full">
+            <div class="flex flex-col md:flex-row w-full gap-4">
                 <div class="w-full">
                     <div class="text-gray-500 font-medium text-xs">
                         Testimonial Board
@@ -10,7 +10,7 @@
                         <a
                         href="{{route('board', [$uniqueId, $slug])}}"
                         wire:navigate
-                        class="text-lg font-medium line-clamp-1"
+                        class="text-lg font-medium line-clamp-2 break-all"
                         >
                             {{route('board', [$uniqueId, $slug])}}
                         </a>
@@ -42,8 +42,9 @@
                     </div>
                 </div>
 
-                <div class="divider divider-horizontal hidden md:flex"></div>
-                <div class="divider divider-vertical md:hidden"></div>
+                <div>
+                    <div class="bg-gray-100 w-full md:w-[2px] h-[2px] md:h-full rounded-full flex"></div>
+                </div>
 
                 <div class="w-full">
                     <div class="text-gray-500 font-medium text-xs">
@@ -53,7 +54,7 @@
                         <a
                         href="{{route('board.form', [$uniqueId, $slug])}}"
                         wire:navigate
-                        class="text-lg font-medium line-clamp-1"
+                        class="text-lg font-medium line-clamp-2 break-all"
                         >
                             {{route('board.form', [$uniqueId, $slug])}}
                         </a>
