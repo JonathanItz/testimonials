@@ -10,7 +10,8 @@
             @if (! $testimonails->isEmpty())
                 <div
                     id="grid-container"
-                    class="-mx-3"
+                    class="-mx-3 opacity"
+                    x-cloak
                     x-init="
                         msnry = new Masonry( $el, {
 

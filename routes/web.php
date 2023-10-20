@@ -72,4 +72,23 @@ Route::get('/testimonial/edit/{testimonial:id}', function(Testimonial $testimoni
 ->middleware(['auth'])
 ->name('testimonial.edit');
 
+Route::get('/settings/{unique_id}/{slug}', function($id, $slug) {
+    $user = auth()->user();
+    $userId = $user->id;
+
+    $board = Board::where('unique_id', $id)
+        ->where('slug', $slug)
+        ->firstOrFail();
+
+    if($userId !== $board->id) {
+        return abort(404);
+    }
+
+    return view('testimonials.settings', [
+        // 'testimonial' => $testimonial
+    ]);
+})
+->middleware(['auth'])
+->name('testimonial.settings');
+
 require __DIR__.'/auth.php';

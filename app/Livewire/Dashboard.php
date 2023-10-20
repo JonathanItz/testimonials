@@ -14,11 +14,7 @@ class Dashboard extends Component
     #[Locked]
     public $board;
 
-    public $name;
-
-    public $slug;
-
-    public $uniqueId;
+    public $name, $slug, $uniqueId;
 
 
     public $total, $accepted, $pending, $declined = 0;

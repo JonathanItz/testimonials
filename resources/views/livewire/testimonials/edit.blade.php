@@ -54,7 +54,7 @@
 
             <div class="mt-6">
                 <div>
-                    <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Image to use</label>
+                    <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Avatar</label>
                     <p class="text-sm text-gray-500">Select which image should be showen for this testimonial</p>
                     <fieldset class="mt-4">
                         <legend class="sr-only">Image to use</legend>
