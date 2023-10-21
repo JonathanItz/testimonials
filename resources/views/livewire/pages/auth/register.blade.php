@@ -29,7 +29,7 @@ new #[Layout('layouts.guest')] class extends Component
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'board' => ['required', 'string', 'max:1000'],
+            'board' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 

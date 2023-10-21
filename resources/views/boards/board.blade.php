@@ -57,7 +57,15 @@
                     @endforeach
                 </div>
             @else
-                No Testimonials Found
+                <div class="text-center fixed inset-0 flex items-center justify-center">
+                    <div>
+                        <h2 class="font-semibold text-2xl">No Testimonials Yet!</h2>
+
+                        <div class="mt-2">
+                            Be the first to add a testimonial <a href="{{route('board.form', [$slug])}}" wire:navigate class="text-accent underline">here</a>.
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
     </div>

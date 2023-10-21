@@ -6,7 +6,7 @@
             </h2>
 
             <div>
-                <a href="{{route('testimonial.settings', [$slug])}}" wire:navigate class="group flex items-center gap-2 text-neutral">
+                <a href="{{route('boards.settings', [$slug])}}" wire:navigate class="group flex items-center gap-2 text-neutral">
                     <span>
                         Board settings
                     </span>

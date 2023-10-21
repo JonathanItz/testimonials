@@ -31,6 +31,8 @@ class Board extends Model
         return $this->hasMany(Testimonial::class);
     }
 
+    protected $guarded = ['id'];
+
     protected $casts = [
         'settings' => 'array'
     ];

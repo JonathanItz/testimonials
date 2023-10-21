@@ -39,6 +39,7 @@ Route::get('/board/{slug}', function($slug) {
     $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
 
     return view('boards.board', [
+        'slug' => $board->slug,
         'testimonails' => $testimonails
     ]);
 })
@@ -86,6 +87,6 @@ Route::get('/settings/{slug}', function($slug) {
     ]);
 })
 ->middleware(['auth'])
-->name('testimonial.settings');
+->name('boards.settings');
 
 require __DIR__.'/auth.php';
