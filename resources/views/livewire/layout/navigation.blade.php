@@ -69,8 +69,12 @@ new class extends Component
                         </x-dropdown>
                     @else
                         <div class="flex gap-4 items-center">
-                            <a href="{{route('register')}}" wire:navigate class="btn btn-secondary btn-outline btn-sm text-xs">Register</a>
-                            <a href="{{route('login')}}" wire:navigate class="btn btn-primary btn-sm text-xs">Login</a>
+                            <a href="{{route('register')}}" wire:navigate class="border border-primary hover:bg-primary transition-colors rounded-md px-4 py-1.5 text-sm font-medium">
+                                Register
+                            </a>
+                            <a href="{{route('login')}}" wire:navigate class="border border-transparent transition-colors bg-secondary hover:bg-secondary/80 rounded-md px-4 py-1.5 text-sm font-medium">
+                                Login
+                            </a>
                         </div>
                     @endauth
                 </div>

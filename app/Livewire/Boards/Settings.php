@@ -20,7 +20,7 @@ class Settings extends Component
         $this->company = $board->name;
 
         
-        if($board?->settings['testimonials']['limit']) {
+        if(isset($board?->settings['testimonials']['limit'])) {
             $this->testimonialLimit = $board?->settings['testimonials']['limit'];
         }
     }

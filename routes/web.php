@@ -32,9 +32,8 @@ Route::view('profile', 'profile')
 // ->middleware(['auth'])
 // ->name('board.create');
 
-Route::get('/board/{unique_id}/{slug}', function($id, $slug) {
-    $board = Board::where('unique_id', $id)
-        ->where('slug', $slug)
+Route::get('/board/{slug}', function($slug) {
+    $board = Board::where('slug', $slug)
         ->firstOrFail();
 
     $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
@@ -45,9 +44,8 @@ Route::get('/board/{unique_id}/{slug}', function($id, $slug) {
 })
 ->name('board');
 
-Route::get('/form/{unique_id}/{slug}', function($id, $slug) {
-    $board = Board::where('unique_id', $id)
-        ->where('slug', $slug)
+Route::get('/form/{slug}', function($slug) {
+    $board = Board::where('slug', $slug)
         ->firstOrFail();
 
     return view('boards.form', [
@@ -72,12 +70,11 @@ Route::get('/testimonial/edit/{testimonial:id}', function(Testimonial $testimoni
 ->middleware(['auth'])
 ->name('testimonial.edit');
 
-Route::get('/settings/{unique_id}/{slug}', function($id, $slug) {
+Route::get('/settings/{slug}', function($slug) {
     $user = auth()->user();
     $userId = $user->id;
 
-    $board = Board::where('unique_id', $id)
-        ->where('slug', $slug)
+    $board = Board::where('slug', $slug)
         ->firstOrFail();
 
     if($userId !== $board->user_id) {
