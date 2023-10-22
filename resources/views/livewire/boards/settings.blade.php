@@ -1,6 +1,31 @@
 <div class="p-6 rounded-xl shadow-md bg-white">
     <form wire:submit="submit">
         <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="col-span-full">
+                <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Company Logo</label>
+                <div class="mt-2 flex items-center gap-x-3">
+                    <div class="shrink-0">
+                        @if ($logo)
+                            <img class="h-32 w-32 object-cover rounded-md" src="{{$logo->temporaryUrl()}}" alt="Current company logo" />
+                        @else
+                            <div>No image selected</div>
+                        @endif
+                    </div>
+                    <label class="block">
+                        <span class="sr-only">Choose profile photo</span>
+                        <input
+                        wire:model="logo"
+                        type="file" class="block w-full text-sm text-slate-500
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-primary file:text-white
+                        hover:file:bg-primary/80
+                        "/>
+                    </label>
+                </div>
+            </div>
+
             <div class="sm:col-span-4">
                 <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Company Name</label>
                 <div class="mt-2">

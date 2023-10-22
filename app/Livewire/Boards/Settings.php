@@ -3,14 +3,18 @@
 namespace App\Livewire\Boards;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\Attributes\Locked;
+use Illuminate\Validation\Rules\File;
 
 class Settings extends Component
 {
+    use WithFileUploads;
+
     #[Locked]
     public $board;
 
-    public $company, $slug;
+    public $logo, $company, $slug;
 
     public $testimonialLimit = 1000;
 
@@ -31,7 +35,11 @@ class Settings extends Component
     public function submit() {
         $this->validate([
             'company' => ['required', 'max:255', 'string'],
-            'testimonialLimit' => ['numeric', 'min:0', 'max:1000', 'nullable']
+            'testimonialLimit' => ['numeric', 'min:0', 'max:1000', 'nullable'],
+            'logo' => File::types(['jpeg', 'jpg', 'png', 'svg'])
+                ->max(3 * 1024),
+        ], [
+            'logo.max' => 'The logo field must not be greater than 3 megabytes.'
         ]);
 
         // $this->board->name = $this->company;

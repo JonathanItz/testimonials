@@ -5,13 +5,15 @@ namespace App\Models;
 use App\Models\User;
 use App\Models\Testimonial;
 use Spatie\Sluggable\HasSlug;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Board extends Model
+class Board extends Model implements HasMedia
 {
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, InteractsWithMedia;
 
     /**
      * Get the options for generating the slug.
