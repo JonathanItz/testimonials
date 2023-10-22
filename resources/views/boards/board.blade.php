@@ -5,6 +5,18 @@
         </h2>
     </x-slot> --}}
 
+    @if ($logoUrl)
+        <div class="flex justify-center pt-8">
+            @if ($websiteUrl)
+                <a href="{{$websiteUrl}}">
+                    <x-company-logo logoUrl="{{$logoUrl}}" />
+                </a>
+            @else
+                <img src="{{$logoUrl}}" alt="Company Logo" class="h-32 w-32 object-cover rounded-md">
+            @endif
+        </div>
+    @endif
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             @if (! $testimonails->isEmpty())

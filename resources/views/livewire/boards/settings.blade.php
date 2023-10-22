@@ -3,13 +3,17 @@
         <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="col-span-full">
                 <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Logo</label>
-                <div class="mt-2 flex items-center gap-x-3">
+                <div class="mt-2 flex flex-col gap-3">
                     <div class="shrink-0">
                         @if ($existingLogo && ! $logo)
-                            <img class="h-32 w-32 object-cover rounded-md" src="{{$existingLogo}}" alt="Current company logo" />
+                            <img
+                            class="w-32 object-cover rounded-md"
+                            src="{{$existingLogo}}"
+                            alt="Current company logo"
+                            />
                         @else
                             @if ($logo)
-                                <img class="h-32 w-32 object-cover rounded-md" src="{{$logo->temporaryUrl()}}" alt="Current company logo" />
+                                <img class="w-32 object-cover rounded-md" src="{{$logo->temporaryUrl()}}" alt="Current company logo" />
                             @else
                             <h4 class="text-sm font-medium">No image selected</h4>
                             @endif

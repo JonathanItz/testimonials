@@ -38,9 +38,22 @@ Route::get('/board/{slug}', function($slug) {
 
     $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
 
+    $logoUrl = '';
+    $logo = $board->getFirstMedia('companylogo');
+    if($logo) {
+        $logoUrl = $board->getFirstMedia('companylogo')->getFullUrl();
+    }
+
+    $websiteUrl = '';
+    if(isset($board?->settings['website'])) {
+        $websiteUrl = 'https://'.$board?->settings['website'];
+    }
+
     return view('boards.board', [
         'slug' => $board->slug,
-        'testimonails' => $testimonails
+        'testimonails' => $testimonails,
+        'logoUrl' => $logoUrl,
+        'websiteUrl' => $websiteUrl
     ]);
 })
 ->name('board');

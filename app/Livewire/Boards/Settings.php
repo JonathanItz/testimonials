@@ -86,14 +86,6 @@ class Settings extends Component
             $this->reset('logo');
         }
 
-        // $this->existingLogo = $this->board->getFirstMedia('companylogo')->getFullUrl();
-
-
-        // $this->board->name = $this->company;
-        // $this->board->settings['testimonials']['limit'] = $this->testimonialLimit;
-
-        // $this->board->save();
-
         $this->showSuccess();
 
         if($this->slug !== $this->board->slug) {
