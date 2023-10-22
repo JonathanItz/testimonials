@@ -14,7 +14,7 @@ class Settings extends Component
     #[Locked]
     public $board;
 
-    public $logo, $company, $slug;
+    public $existingLogo, $logo, $company, $slug;
 
     public $testimonialLimit = 1000;
 
@@ -27,8 +27,14 @@ class Settings extends Component
 
         $this->company = $board->name;
         $this->slug = $board->slug;
+
         if(isset($board?->settings['testimonials']['limit'])) {
             $this->testimonialLimit = $board?->settings['testimonials']['limit'];
+        }
+
+        $companyLogo = $board->getFirstMedia('companylogo');
+        if($companyLogo) {
+            $this->existingLogo = $companyLogo->getFullUrl();
         }
     }
 
@@ -36,8 +42,11 @@ class Settings extends Component
         $this->validate([
             'company' => ['required', 'max:255', 'string'],
             'testimonialLimit' => ['numeric', 'min:0', 'max:1000', 'nullable'],
-            'logo' => File::types(['jpeg', 'jpg', 'png', 'svg'])
-                ->max(3 * 1024),
+            'logo' => [
+                'nullable',
+                File::types(['jpeg', 'jpg', 'png', 'svg'])
+                    ->max(3 * 1024)
+            ],
         ], [
             'logo.max' => 'The logo field must not be greater than 3 megabytes.'
         ]);
@@ -53,6 +62,26 @@ class Settings extends Component
                 ]
             ]
         ]);
+
+
+
+        if($this->logo) {
+            $this->existingLogo = $this->logo->temporaryUrl();
+
+            $existingCompanyLogo = $this->board->getFirstMedia('companylogo');
+            if($existingCompanyLogo) {
+                $existingCompanyLogo->delete();
+            }
+    
+            $this->board
+                ->addMedia($this->logo)
+                ->toMediaCollection('companylogo');
+
+            $this->reset('logo');
+        }
+
+        // $this->existingLogo = $this->board->getFirstMedia('companylogo')->getFullUrl();
+
 
         // $this->board->name = $this->company;
         // $this->board->settings['testimonials']['limit'] = $this->testimonialLimit;

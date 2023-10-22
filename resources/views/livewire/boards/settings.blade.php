@@ -5,10 +5,14 @@
                 <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Company Logo</label>
                 <div class="mt-2 flex items-center gap-x-3">
                     <div class="shrink-0">
-                        @if ($logo)
-                            <img class="h-32 w-32 object-cover rounded-md" src="{{$logo->temporaryUrl()}}" alt="Current company logo" />
+                        @if ($existingLogo && ! $logo)
+                            <img class="h-32 w-32 object-cover rounded-md" src="{{$existingLogo}}" alt="Current company logo" />
                         @else
-                            <div>No image selected</div>
+                            @if ($logo)
+                                <img class="h-32 w-32 object-cover rounded-md" src="{{$logo->temporaryUrl()}}" alt="Current company logo" />
+                            @else
+                            <h4 class="text-sm font-medium">No image selected</h4>
+                            @endif
                         @endif
                     </div>
                     <label class="block">
