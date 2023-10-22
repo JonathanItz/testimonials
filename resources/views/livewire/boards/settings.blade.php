@@ -2,7 +2,7 @@
     <form wire:submit="submit">
         <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="col-span-full">
-                <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Company Logo</label>
+                <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Logo</label>
                 <div class="mt-2 flex items-center gap-x-3">
                     <div class="shrink-0">
                         @if ($existingLogo && ! $logo)
@@ -31,22 +31,32 @@
             </div>
 
             <div class="sm:col-span-4">
-                <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Company Name</label>
+                <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Board Name</label>
                 <div class="mt-2">
                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
                         <input autofocus wire:model="company" type="text" name="company" id="company" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Your Company Name">
                     </div>
                     <span class="text-gray-700 text-xs font-medium">
-                        Updating this will change the company URL as well.
+                        Updating this will change the board URL as well.
                     </span>
                 </div>
             </div>
+
+            <div class="sm:col-span-4">
+                <label for="website" class="block text-sm font-medium leading-6 text-gray-900">Website</label>
+                <div class="mt-2">
+                    <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
+                        <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">https://</span>
+                        <input wire:model="website" type="text" name="website" id="website" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="www.example.com">
+                    </div>
+                </div>
+              </div>
     
             <div class="sm:col-span-4">
                 <label for="limit" class="block text-sm font-medium leading-6 text-gray-900">Set Max Character Length of Testimonials</label>
                 <div class="mt-2">
                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
-                        <input autofocus wire:model="testimonialLimit" type="number" name="limit" id="limit" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="500" value="1000" maxlength="1000" minlength="0">
+                        <input wire:model="testimonialLimit" type="number" name="limit" id="limit" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="500" value="1000" maxlength="1000" minlength="0">
                     </div>
                     <span class="text-gray-700 text-xs font-medium">
                         This number can not exceed over 1000.

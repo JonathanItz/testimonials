@@ -14,7 +14,7 @@ class Settings extends Component
     #[Locked]
     public $board;
 
-    public $existingLogo, $logo, $company, $slug;
+    public $existingLogo, $logo, $company, $website, $slug;
 
     public $testimonialLimit = 1000;
 
@@ -32,6 +32,10 @@ class Settings extends Component
             $this->testimonialLimit = $board?->settings['testimonials']['limit'];
         }
 
+        if(isset($board?->settings['website'])) {
+            $this->website = $board?->settings['website'];
+        }
+
         $companyLogo = $board->getFirstMedia('companylogo');
         if($companyLogo) {
             $this->existingLogo = $companyLogo->getFullUrl();
@@ -41,6 +45,7 @@ class Settings extends Component
     public function submit() {
         $this->validate([
             'company' => ['required', 'max:255', 'string'],
+            'website' => ['nullable', 'max:255', 'string'],
             'testimonialLimit' => ['numeric', 'min:0', 'max:1000', 'nullable'],
             'logo' => [
                 'nullable',
@@ -59,7 +64,8 @@ class Settings extends Component
             'settings' => [
                 'testimonials' => [
                     'limit' => $this->testimonialLimit
-                ]
+                ],
+                'website' => $this->website
             ]
         ]);
 

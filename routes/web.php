@@ -49,8 +49,21 @@ Route::get('/form/{slug}', function($slug) {
     $board = Board::where('slug', $slug)
         ->firstOrFail();
 
+    $logoUrl = '';
+    $logo = $board->getFirstMedia('companylogo');
+    if($logo) {
+        $logoUrl = $board->getFirstMedia('companylogo')->getFullUrl();
+    }
+
+    $websiteUrl = '';
+    if(isset($board?->settings['website'])) {
+        $websiteUrl = 'https://'.$board?->settings['website'];
+    }
+
     return view('boards.form', [
-        'boardId' => $board->id
+        'boardId' => $board->id,
+        'logoUrl' => $logoUrl,
+        'websiteUrl' => $websiteUrl
     ]);
 })
 ->name('board.form');
