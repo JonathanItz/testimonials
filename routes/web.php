@@ -58,17 +58,17 @@ Route::get('/board/{slug}', function($slug) {
 })
 ->name('board');
 
-// Route::get('/iframe/{slug}', function($slug) {
-//     $board = Board::where('slug', $slug)
-//         ->firstOrFail();
+Route::get('/iframe/{slug}', function($slug) {
+    $board = Board::where('slug', $slug)
+        ->firstOrFail();
 
-//     $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
-//     return view('boards.iframe', [
-//         'slug' => $board->slug,
-//         'testimonails' => $testimonails
-//     ]);
-// })
-// ->name('board.iframe');
+    $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
+    return view('boards.iframe', [
+        'slug' => $board->slug,
+        'testimonails' => $testimonails
+    ]);
+})
+->name('board.iframe');
 
 Route::get('/form/{slug}', function($slug) {
     $board = Board::where('slug', $slug)

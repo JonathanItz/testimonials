@@ -13,6 +13,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <script type="module" src="{{asset('/assets/js/iframe.js')}}"></script>
+
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
