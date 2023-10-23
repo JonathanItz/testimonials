@@ -8,7 +8,7 @@
                     x-cloak
                     x-init="
                         msnry = new Masonry( $el, {
-
+                            transitionDuration: 0
                         });
                     "
                 >
