@@ -84,6 +84,11 @@ class Settings extends Component
                 ->toMediaCollection('companylogo');
 
             $this->reset('logo');
+        } elseif(! $this->logo && ! $this->existingLogo) {
+            $existingCompanyLogo = $this->board->getFirstMedia('companylogo');
+            if($existingCompanyLogo) {
+                $existingCompanyLogo->delete();
+            }
         }
 
         $this->showSuccess();
@@ -92,6 +97,11 @@ class Settings extends Component
             session()->flash('slug-updated', true);
             return $this->redirect(route('boards.settings', [$this->board->slug]), navigate: true);
         }
+    }
+
+    public function removeLogo() {
+        $this->reset('logo');
+        $this->existingLogo = '';
     }
 
     public function showSuccess() {

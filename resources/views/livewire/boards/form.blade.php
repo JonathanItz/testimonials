@@ -40,7 +40,7 @@
                         <div class="col-span-full">
                             <label for="testimonial" class="block text-sm font-medium leading-6 text-gray-900">Testimonial<span class="text-red-400">*</span></label>
                             <div class="mt-2">
-                                <textarea maxlength="1000" wire:model="testimonial" id="testimonial" name="testimonial" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" required></textarea>
+                                <textarea wire:model="testimonial" id="testimonial" name="testimonial" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" required></textarea>
                             </div>
                             <p class="mt-3 text-sm leading-6 text-gray-600">Share what you have to say about this product/service.</p>
                         </div>
@@ -93,7 +93,7 @@
         </div>
     
         @if ($errors->any())
-            <div class="alert bg-red-100">
+            <div class="bg-red-100 mt-6 rounded-xl border border-red-200 px-6 py-4">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -110,13 +110,14 @@
         </div>
     </form>
 
-    <div id="step-2" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl px-4 py-6 sm:p-8 transition-opacity" style="display:none">
+    <div id="step-2" style="display:none;" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl px-4 py-6 sm:p-8 transition-opacity">
         <div class="text-center">
             <h2 class="text-xl">Thank you for submitting your testimonial 🎉</h2>
             <div class="mt-4">
-                <p class="text-gray-600 font-medium">Your submission is under review and could take a few days to be accepted.</p>
-
-                <a href="{{url()->full()}}" wire:navigate class="btn btn-primary btn-sm mt-8">Go back</a>
+                <p class="text-gray-600 font-medium">Your testimonial is under review and could take a few days to be accepted.</p>
+                @if ($websiteUrl)
+                    <a href="{{$websiteUrl}}" class="rounded-full bg-primary hover:bg-primary/80 transition-colors px-4 py-1.5 mt-8 inline-block">Back to Website</a>
+                @endif
             </div>
         </div>
     </div>

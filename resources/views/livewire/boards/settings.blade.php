@@ -2,7 +2,20 @@
     <form wire:submit="submit">
         <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="col-span-full">
-                <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Logo</label>
+                <label for="photo" class="text-sm font-medium leading-6 text-gray-900 flex items-center gap-2">
+                    <span>Logo</span>
+                    @if ($existingLogo || $logo)
+                        <button
+                        type="button"
+                        class="text-xs font-medium bg-gray-100 hover:bg-gray-200 transition-colors rounded-full p-1 text-neutral"
+                        wire:click="removeLogo"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    @endif
+                </label>
                 <div class="mt-2 flex flex-col gap-3">
                     <div class="shrink-0">
                         @if ($existingLogo && ! $logo)

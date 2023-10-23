@@ -12,7 +12,7 @@
                     <x-company-logo logoUrl="{{$logoUrl}}" />
                 </a>
             @else
-                <img src="{{$logoUrl}}" alt="Company Logo" class="h-32 w-32 object-cover rounded-md">
+                <x-company-logo logoUrl="{{$logoUrl}}" />
             @endif
         </div>
     @endif

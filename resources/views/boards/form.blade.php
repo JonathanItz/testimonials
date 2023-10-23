@@ -12,14 +12,14 @@
                     <x-company-logo logoUrl="{{$logoUrl}}" />
                 </a>
             @else
-                <img src="{{$logoUrl}}" alt="Company Logo" class="h-32 w-32 object-cover rounded-md">
+                <x-company-logo logoUrl="{{$logoUrl}}" />
             @endif
         </div>
     @endif
 
     <div class="py-20">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-            <livewire:boards.form boardId="{{$boardId}}" />
+            <livewire:boards.form boardId="{{$boardId}}" websiteUrl="{{$websiteUrl}}" limit="{{$limit}}" />
         </div>
     </div>
 </x-board-layout>

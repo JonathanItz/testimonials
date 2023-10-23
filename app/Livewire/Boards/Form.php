@@ -11,7 +11,10 @@ class Form extends Component
     #[Locked]
     public $boardId;
 
-    public $fullName, $company, $jobPosition, $testimonial, $email;
+    public $fullName, $company, $jobPosition, $testimonial, $email, $websiteUrl;
+
+    public $limit = 1000;
+
     public bool $termsOfService;
 
     public function submit() {
@@ -19,7 +22,7 @@ class Form extends Component
             'fullName' => ['required', 'string', 'max:255'],
             'company' => ['nullable', 'string', 'max:255'],
             'jobPosition' => ['nullable', 'string', 'max:255'],
-            'testimonial' => ['required', 'string', 'max:1000'],
+            'testimonial' => ['required', 'string', "max:$this->limit"],
             'email' => ['required', 'string', 'email', 'max:255'],
             'termsOfService' => ['required', 'accepted'],
         ]);

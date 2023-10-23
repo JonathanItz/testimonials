@@ -45,7 +45,7 @@ Route::get('/board/{slug}', function($slug) {
     }
 
     $websiteUrl = '';
-    if(isset($board?->settings['website'])) {
+    if(isset($board?->settings['website']) && $board?->settings['website']) {
         $websiteUrl = 'https://'.$board?->settings['website'];
     }
 
@@ -69,14 +69,20 @@ Route::get('/form/{slug}', function($slug) {
     }
 
     $websiteUrl = '';
-    if(isset($board?->settings['website'])) {
+    if(isset($board?->settings['website']) && $board?->settings['website']) {
         $websiteUrl = 'https://'.$board?->settings['website'];
+    }
+
+    $limit = 1000;
+    if(isset($board?->settings['testimonials']['limit']) && $board?->settings['testimonials']['limit']) {
+        $limit = +$board?->settings['testimonials']['limit'];
     }
 
     return view('boards.form', [
         'boardId' => $board->id,
         'logoUrl' => $logoUrl,
-        'websiteUrl' => $websiteUrl
+        'websiteUrl' => $websiteUrl,
+        'limit' => $limit
     ]);
 })
 ->name('board.form');
