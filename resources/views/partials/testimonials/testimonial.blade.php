@@ -1,4 +1,4 @@
-<div class="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.3%-1.5rem)] bg-white border border-gray-100 rounded-xl shadow-md p-6 mb-6 last:mb-0">
+<div class="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.3%-1.5rem)] bg-white border border-gray-100 rounded-xl shadow-md p-6 mb-6">
     <div class="flex gap-4">
         <div class="shrink-0">
             <img
