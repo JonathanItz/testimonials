@@ -1,5 +1,5 @@
 <x-iframe-layout>
-    <div class="p-4">
+    <div class="p-4 min-h-[4rem] h-full">
         <div>
             @if (! $testimonails->isEmpty())
                 <div
@@ -17,7 +17,7 @@
                     @endforeach
                 </div>
             @else
-                <div class="text-center fixed inset-0 flex items-center justify-center">
+                <div class="text-center min-h-full">
                     <div>
                         <h2 class="font-semibold text-2xl">No Testimonials Yet!</h2>
 
