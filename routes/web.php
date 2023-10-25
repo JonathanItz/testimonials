@@ -63,9 +63,12 @@ Route::get('/iframe/{slug}', function($slug) {
         ->firstOrFail();
 
     $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
+    $isIframe = true;
+
     return view('boards.iframe', [
         'slug' => $board->slug,
-        'testimonails' => $testimonails
+        'testimonails' => $testimonails,
+        'isIframe' => $isIframe
     ]);
 })
 ->name('board.iframe');

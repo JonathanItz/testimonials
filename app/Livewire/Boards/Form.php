@@ -38,7 +38,7 @@ class Form extends Component
         ]);
 
         $this->js('nextStep(2)');
-        $this->reset();
+        $this->resetExcept('boardId', 'websiteUrl', 'limit');
     }
 
     public function render()

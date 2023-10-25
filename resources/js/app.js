@@ -1,4 +1,5 @@
 import './bootstrap';
+import './iframe';
 import Toastify from 'toastify-js'
 import Masonry from 'masonry-layout'
 
