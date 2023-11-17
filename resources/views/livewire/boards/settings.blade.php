@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="col-span-full mt-8"
+            <div class="col-span-full mt-8 bg-gray-50 rounded-xl p-6 border border-gray-100"
                 x-data="{
                     radius: 'rounded-xl'
                 }"
@@ -99,8 +99,8 @@
                         <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
                             <select x-model="radius" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
                                 <option value="">No border radius</option>
-                                <option value="rounded-sm">Small</option>
-                                <option value="rounded-md">Medium</option>
+                                <option value="rounded-md">Small</option>
+                                <option value="rounded-lg">Medium</option>
                                 <option value="rounded-xl">Large</option>
                             </select>
                         </div>
@@ -117,7 +117,11 @@
                     >
                         <div class="flex gap-4">
                             <div class="shrink-0">
-                                <span class="rounded-full w-10 h-10"></span>
+                                <img
+                                src="https://www.gravatar.com/avatar/?d=mp"
+                                alt="User profile picture"
+                                class="rounded-full w-10"
+                                >
                             </div>
                     
                             <div class="w-full">
