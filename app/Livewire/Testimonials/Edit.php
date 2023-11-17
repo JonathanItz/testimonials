@@ -28,7 +28,7 @@ class Edit extends Component
         $fullName = rawurlencode("$this->fullName");
 
         $this->initialsUrl = "https://ui-avatars.com/api/?name=$fullName";
-        $this->gravitarUrl = "https://www.gravatar.com/avatar/$emailHash";
+        $this->gravitarUrl = "https://www.gravatar.com/avatar/$emailHash?d=mp";
 
         if($this->testimonialModal->image_to_use) {
             $this->avatar = $this->testimonialModal->image_to_use;

@@ -1,6 +1,6 @@
 <div class="p-6 rounded-xl shadow-md bg-white">
     <form wire:submit="submit">
-        <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="col-span-full">
                 <label for="photo" class="text-sm font-medium leading-6 text-gray-900 flex items-center gap-2">
                     <span>Logo</span>
@@ -60,12 +60,15 @@
             </div>
 
             <div class="sm:col-span-4">
-                <label for="website" class="block text-sm font-medium leading-6 text-gray-900">Website</label>
+                <label for="website" class="block text-sm font-medium leading-6 text-gray-900">Website URL</label>
                 <div class="mt-2">
                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
                         <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">https://</span>
                         <input wire:model="website" type="text" name="website" id="website" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="www.example.com">
                     </div>
+                    <span class="text-gray-700 text-xs font-medium">
+                        Add your website URL so users can go back to your website.
+                    </span>
                 </div>
               </div>
     
@@ -76,9 +79,72 @@
                         <input wire:model="testimonialLimit" type="number" name="limit" id="limit" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="500" value="1000" maxlength="1000" minlength="0">
                     </div>
                     <span class="text-gray-700 text-xs font-medium">
-                        This number can not exceed over 1000.
+                        This number cannot exceed over 1000.
                     </span>
                 </div>
+            </div>
+
+            <div class="col-span-full mt-8"
+                x-data="{
+                    radius: 'rounded-xl'
+                }"
+            >
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    Testimonial Styles
+                </h2>
+
+                <div class="mt-4">
+                    <label for="limit" class="block text-sm font-medium leading-6 text-gray-900">Border Radius</label>
+                    <div class="mt-2">
+                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
+                            <select x-model="radius" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+                                <option value="">No border radius</option>
+                                <option value="rounded-sm">Small</option>
+                                <option value="rounded-md">Medium</option>
+                                <option value="rounded-xl">Large</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h4 class="block text-sm font-medium leading-6 text-gray-900">
+                        Example Testimonial
+                    </h4>
+                    <div
+                    class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.3%-1rem)] bg-white border border-gray-100 shadow-md p-6 mt-2"
+                    x-bind:class="radius"
+                    >
+                        <div class="flex gap-4">
+                            <div class="shrink-0">
+                                <span class="rounded-full w-10 h-10"></span>
+                            </div>
+                    
+                            <div class="w-full">
+                                <h3 class="font-semibold line-clamp-2 text-lg">
+                                    John Doe
+                                </h3>
+                    
+                                <div class="text-sm font-medium text-gray-600">
+                                    <span>
+                                        Marketing Manager
+                                    </span>
+                                    <span class="bg-gray-600 inline-block rounded-full h-0.5 w-0.5 mx-1 relative -top-0.5"></span>
+                                    <span>
+                                        Example Company
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="mt-4">
+                            <p>
+                                This is a fake testimonial. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis, impedit! Aliquam voluptatem ullam inventore et ex eligendi nulla enim!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
