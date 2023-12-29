@@ -4,6 +4,7 @@ namespace App\Livewire\Boards;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\Locked;
 use Illuminate\Validation\Rules\File;
 
@@ -17,6 +18,8 @@ class Settings extends Component
     public $existingLogo, $logo, $company, $website, $slug;
 
     public $testimonialLimit = 1000;
+
+    public $radius = 'rounded-xl';
 
     public function mount() {
         if(session('slug-updated')) {
@@ -52,8 +55,12 @@ class Settings extends Component
                 File::types(['jpeg', 'jpg', 'png', 'svg'])
                     ->max(3 * 1024)
             ],
+            'radius' => [
+                Rule::in(['','rounded-md', 'rounded-lg', 'rounded-xl'])
+            ]
         ], [
-            'logo.max' => 'The logo field must not be greater than 3 megabytes.'
+            'logo.max' => 'The logo field must not be greater than 3 megabytes.',
+            'radius.in' => 'Please select a border radius.',
         ]);
 
         // $this->board->name = $this->company;
@@ -63,9 +70,10 @@ class Settings extends Component
             'name' => $this->company,
             'settings' => [
                 'testimonials' => [
-                    'limit' => $this->testimonialLimit
+                    'limit' => $this->testimonialLimit,
+                    'radius' => $this->radius
                 ],
-                'website' => $this->website
+                'website' => $this->website,
             ]
         ]);
 

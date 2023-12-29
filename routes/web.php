@@ -49,11 +49,17 @@ Route::get('/board/{slug}', function($slug) {
         $websiteUrl = 'https://'.$board?->settings['website'];
     }
 
+    $radius = 'rounded-xl';
+    if(isset($board?->settings['testimonials']['radius'])) {
+        $radius = $board?->settings['testimonials']['radius'];
+    }
+
     return view('boards.board', [
         'slug' => $board->slug,
         'testimonails' => $testimonails,
         'logoUrl' => $logoUrl,
-        'websiteUrl' => $websiteUrl
+        'websiteUrl' => $websiteUrl,
+        'radius' => $radius
     ]);
 })
 ->name('board');
@@ -65,10 +71,16 @@ Route::get('/iframe/{slug}', function($slug) {
     $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
     $isIframe = true;
 
+    $radius = 'rounded-xl';
+    if(isset($board?->settings['testimonials']['radius'])) {
+        $radius = $board?->settings['testimonials']['radius'];
+    }
+
     return view('boards.iframe', [
         'slug' => $board->slug,
         'testimonails' => $testimonails,
-        'isIframe' => $isIframe
+        'isIframe' => $isIframe,
+        'radius' => $radius,
     ]);
 })
 ->name('board.iframe');

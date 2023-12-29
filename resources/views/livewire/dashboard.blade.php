@@ -118,7 +118,7 @@
                 },
             }"
             role="region"
-            class="border border-gray-200 rounded-xl"
+            class="border border-gray-200 rounded-lg"
             >
                 <h2>
                     <button
@@ -135,8 +135,8 @@
                 <div x-show="expanded" x-collapse x-cloak>
                     <pre class="px-6 text-left overflow-x-auto w-full text-sm bg-neutral text-white pb-6"><code class="w-full text-sm" x-ref="iframeCode">
 &lt;script src="{{route('home')}}/assets/js/iframe.js">&lt;/script&gt;
-&lt;iframe id="test" src="{{route('board.iframe', [$slug])}}" frameborder="0" scrolling="no" width="100%"&gt;&lt;/iframe&gt;
-&lt;script type="text/javascript"&gt;iFrameResize({log: false, checkOrigin: false}, "#test");&lt;/script&gt;
+&lt;iframe id="lemonbestieframe" src="{{route('board.iframe', [$slug])}}" frameborder="0" scrolling="no" width="100%"&gt;&lt;/iframe&gt;
+&lt;script type="text/javascript"&gt;iFrameResize({log: false, checkOrigin: false}, "#lemonbestieframe");&lt;/script&gt;
 </code></pre>
                 <div class="py-4 px-6 flex gap-4 flex-col md:flex-row md:items-center justify-between">
                     <span class="text-sm font-medium">
@@ -166,7 +166,7 @@
 
         <div class="grid grid-cols-3 md:gap-6 mt-6 md:mt-8 bg-gray-100 md:bg-transparent rounded-xl border border-gray-200 md:border-none">
             @php
-                $cardClasses = 'px-4 py-3 rounded-xl text-left md:border md:border-gray-200 md:bg-gray-100 w-full';
+                $cardClasses = 'px-4 py-3 rounded-lg text-left md:border md:border-gray-200 md:bg-gray-100 w-full';
             @endphp
             <div
             class="{{$cardClasses}}"
