@@ -38,6 +38,7 @@ class Edit extends Component
         $this->gravitarUrl = "https://www.gravatar.com/avatar/$emailHash?d=mp";
 
         if($this->testimonialModal->image_to_use) {
+            // dd($this->testimonialModal->image_to_use);
             $this->avatar = $this->testimonialModal->image_to_use;
         } else {
             $this->avatar = $this->initialsUrl;

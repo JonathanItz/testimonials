@@ -21,6 +21,8 @@ class Dashboard extends Component
 
     public $status = '';
 
+    public $isSubscribed = false;
+
     public function mount() {
         $user = auth()?->user();
         $this->board = Board::where('user_id', $user->id)->first();
@@ -28,6 +30,8 @@ class Dashboard extends Component
         $this->name = $this->board->name;
         $this->slug = $this->board->slug;
         $this->uniqueId = $this->board->unique_id;
+
+        $this->isSubscribed = $user?->subscribed();
     }
 
     public function render()

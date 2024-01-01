@@ -100,7 +100,12 @@
 
         <div class="border-t border-gray-900/10 pt-12">
             <h2 class="text-base font-semibold leading-7 text-gray-900">About this customer</h2>
-            <p class="mt-1 text-sm leading-6 text-gray-600">Information about this customer and their testimonial.</p>
+            <p class="mt-1 text-sm leading-6 text-gray-600">
+                Information about this customer and their testimonial.
+                @if (! $isSubscribed)
+                    <span class="">To edit these details, please consider <a href="/billing" class="font-medium hover:underline">upgrading to our premium subscription</a> at $10/mo.</span>
+                @endif
+            </p>
     
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-4">

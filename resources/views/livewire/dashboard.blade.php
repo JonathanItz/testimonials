@@ -183,7 +183,17 @@
             >
                 <div class="stat">
                     <div class="text-gray-500 font-medium text-xs">Accepted Testimonials</div>
-                    <div class="text-2xl md:text-4xl font-black text-neutral">{{$accepted}}</div>
+                    <div class="">
+                        <span class="text-2xl md:text-4xl font-black text-neutral">
+                            {{$accepted}}
+                        </span>
+                        @if (! $isSubscribed)
+                            /10
+                        @endif
+                    </div>
+                    @if (! $isSubscribed)
+                        <span class="text-xs leading-4 block mt-2 font-medium text-gray-500">To increase your accepted testimonials, consider <a href="/billing" class="text-neutral font-medium hover:underline">upgrading to our premium subscription</a>.</span>
+                    @endif
                     {{-- <div class="text-xs font-medium text-gray-500">21% more than last month</div> --}}
                 </div>
             </div>
