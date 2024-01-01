@@ -14,14 +14,21 @@ class Edit extends Component
 
     public $fullName, $company, $jobPosition, $testimonial, $email, $status, $gravitarUrl, $initialsUrl, $avatar;
 
+    public $isSubscribed = false;
+
+    public $limit = 1000;
 
     public function mount() {
+        $user = auth()?->user();
+
         $this->fullName = $this->testimonialModal->full_name;
         $this->company = $this->testimonialModal->company;
         $this->jobPosition = $this->testimonialModal->job_position;
         $this->testimonial = $this->testimonialModal->testimonial;
         $this->email = $this->testimonialModal->email;
         $this->status = $this->testimonialModal->status;
+
+        $this->isSubscribed = $user?->subscribed();
 
         $emailHash = md5($this->email);
 
@@ -38,10 +45,21 @@ class Edit extends Component
     }
 
     public function submit() {
-        $this->validate([
+        $rules = [
             'status' => ['required', Rule::in(['pending', 'accepted', 'declined'])],
             'avatar' => [Rule::in([$this->initialsUrl, $this->gravitarUrl])]
-        ]);
+        ];
+
+        if($this->isSubscribed) {
+            $rules = array_merge($rules, [
+                'fullName' => ['required', 'string', 'max:255'],
+                'company' => ['nullable', 'string', 'max:255'],
+                'jobPosition' => ['nullable', 'string', 'max:255'],
+                'testimonial' => ['required', 'string', "max:$this->limit"],
+            ]);
+        }
+
+        $this->validate($rules);
 
         $this->testimonialModal->status = $this->status;
         $this->testimonialModal->image_to_use = $this->avatar;

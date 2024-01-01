@@ -90,10 +90,12 @@
                 </div>
             @endif
 
-            <div class="mt-6 flex items-center justify-end gap-x-6">
-                {{-- <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button> --}}
-                <button type="submit" class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Save</button>
-            </div>
+            @if (! $isSubscribed)
+                <div class="mt-6 flex items-center justify-end gap-x-6">
+                    {{-- <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button> --}}
+                    <button type="submit" class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Save</button>
+                </div>
+            @endif
         </div>
 
         <div class="border-t border-gray-900/10 pt-12">
@@ -105,7 +107,7 @@
                     <label for="full_name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
                     <div class="mt-2">
                         <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
-                            <input disabled wire:model="fullName" autocomplete="name" type="text" name="full_name" id="full_name" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-60">
+                            <input {{$isSubscribed ? '' : 'disabled'}} wire:model="fullName" autocomplete="name" type="text" name="full_name" id="full_name" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-60">
                         </div>
                     </div>
                 </div>
@@ -115,7 +117,7 @@
                         <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Company Name</label>
                         <div class="mt-2">
                             <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary">
-                                <input disabled wire:model="company" autocomplete="name" type="text" name="company" id="company" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-60">
+                                <input {{$isSubscribed ? '' : 'disabled'}} wire:model="company" autocomplete="name" type="text" name="company" id="company" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-60">
                             </div>
                         </div>
                     </div>
@@ -124,7 +126,7 @@
                         <label for="position" class="block text-sm font-medium leading-6 text-gray-900">Job Position</label>
                         <div class="mt-2">
                             <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary">
-                                <input disabled wire:model="jobPosition" autocomplete="organization-title" type="text" name="position" id="position" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-60">
+                                <input {{$isSubscribed ? '' : 'disabled'}} wire:model="jobPosition" autocomplete="organization-title" type="text" name="position" id="position" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-60">
                             </div>
                         </div>
                     </div>
@@ -133,12 +135,19 @@
                 <div class="col-span-full">
                     <label for="testimonial" class="block text-sm font-medium leading-6 text-gray-900">Testimonial</label>
                     <div class="mt-2">
-                        <textarea disabled wire:model="testimonial" id="testimonial" name="testimonial" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-60"></textarea>
+                        <textarea {{$isSubscribed ? '' : 'disabled'}}  wire:model="testimonial" id="testimonial" name="testimonial" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 disabled:cursor-not-allowed disabled:opacity-60"></textarea>
                     </div>
                     {{-- <p class="mt-3 text-sm leading-6 text-gray-600">Share what you have to say about this product/service.</p> --}}
                 </div>
             </div>
         </div>
+
+        @if ($isSubscribed)
+            <div class="mt-6 flex items-center justify-end gap-x-6">
+                {{-- <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button> --}}
+                <button type="submit" class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Save</button>
+            </div>
+        @endif
     
         {{-- <div class="border-b border-gray-900/10 pb-12">
             <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>

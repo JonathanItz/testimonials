@@ -43,7 +43,7 @@ new class extends Component
                     @auth
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
-                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 shadow">
+                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 shadow relative">
                                     <div x-data="{ name: '{{ auth()->user()->name }}' }" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
     
                                     <div class="ml-1">
@@ -51,6 +51,12 @@ new class extends Component
                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                         </svg>
                                     </div>
+
+                                    @if (auth()->user()?->subscribed())
+                                        <div class="absolute bg-primary rounded-full -top-2 -right-4 text-white p-1 font-bold text-xs rotate-12 shadow">
+                                            pro
+                                        </div>
+                                    @endif
                                 </button>
                             </x-slot>
     

@@ -123,8 +123,14 @@ Route::get('/testimonial/edit/{testimonial:id}', function(Testimonial $testimoni
         return abort(404);
     }
 
+    $limit = 1000;
+    if(isset($board?->settings['testimonials']['limit']) && $board?->settings['testimonials']['limit']) {
+        $limit = +$board?->settings['testimonials']['limit'];
+    }
+
     return view('testimonials.edit', [
-        'testimonial' => $testimonial
+        'testimonial' => $testimonial,
+        'limit' => $limit,
     ]);
 })
 ->middleware(['auth'])
