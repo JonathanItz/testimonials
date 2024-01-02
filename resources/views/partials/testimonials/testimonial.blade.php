@@ -1,4 +1,4 @@
-<div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.3%-1rem)] bg-white border border-gray-100 shadow-md p-6 mb-6 {{$radius}}">
+<div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.3%-1rem)] bg-white border border-gray-100 shadow-md p-6 mb-6 {{$radius ?:'rounded-xl'}}">
     <div class="flex gap-4">
         <div class="shrink-0">
             <img
