@@ -2,9 +2,10 @@
 
 namespace App\Livewire\Testimonials;
 
+use Livewire\Component;
+use App\Models\Testimonial;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Locked;
-use Livewire\Component;
 
 class Edit extends Component
 {
@@ -58,6 +59,28 @@ class Edit extends Component
                 'jobPosition' => ['nullable', 'string', 'max:255'],
                 'testimonial' => ['required', 'string', "max:$this->limit"],
             ]);
+        } else {
+            $testimonailsCount = Testimonial::where('board_id', $this->testimonialModal->board_id)
+                ->where('status', 'accepted')
+                ->count();
+
+            
+            if($testimonailsCount >= 10 && $this->status === 'accepted') {
+                $this->js('
+                    Toastify({
+                        text: "You may only have up to 10 accepted testimonials on the free tier.",
+                        duration: 3000,
+                        close: true,
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "#f87171",
+                            borderRadius: "0.375rem"
+                        },
+                    }).showToast();
+                ');
+
+                return;
+            }
         }
 
         $this->validate($rules);
@@ -78,7 +101,6 @@ class Edit extends Component
                 },
             }).showToast();
         ');
-        // dd($this);
     }
 
     public function render()
