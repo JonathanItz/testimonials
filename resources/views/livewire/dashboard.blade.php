@@ -246,7 +246,7 @@
         </div>
 
         <div class="col-span-12 md:col-span-8 lg:col-span-9">
-            <div id="testimonials" class="p-6 rounded-xl w-full shadow-md bg-white">
+            <div id="testimonials" class="p-4 rounded-xl w-full shadow-md bg-white">
                 <div class="card-body">
                     <div class="max-w-sm mb-2 md:hidden">
                         <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
@@ -258,7 +258,7 @@
                         </select>
                     </div>
                     @if (!$testimonials->isEmpty())
-                        <ul role="list" class="divide-y divide-white/5">
+                        <ul role="list" class="space-y-2">
                             @foreach ($testimonials as $testimonial)
                                 @if ($testimonial->status === 'pending')
                                     <x-pending-testimonial :testimonial="$testimonial" />
@@ -273,7 +273,7 @@
                         {{ $testimonials->links(data: ['scrollTo' => '#testimonials']) }}
                     @else
                         <div class="text-center">
-                            No testimonials have been submitted.
+                            No testimonials found
                         </div>
                     @endif
                 </div>

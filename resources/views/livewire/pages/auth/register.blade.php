@@ -97,6 +97,10 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <div class="text-xs font-medium mt-2">
+            By creating an account, you agree to Lemon Bestie's <a href="{{route('terms')}}" class="font-semibold hover:underline">Terms of Service</a>.
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>
                 {{ __('Already registered?') }}

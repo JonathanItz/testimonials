@@ -49,7 +49,7 @@ class Settings extends Component
         $this->validate([
             'company' => ['required', 'max:255', 'string'],
             'website' => ['nullable', 'max:255', 'string'],
-            'testimonialLimit' => ['numeric', 'min:0', 'max:1000', 'nullable'],
+            'testimonialLimit' => ['numeric', 'min:1', 'max:1000', 'nullable'],
             'logo' => [
                 'nullable',
                 File::types(['jpeg', 'jpg', 'png', 'svg'])

@@ -2,7 +2,9 @@
 
 use App\Models\Board;
 use App\Models\Testimonial;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\NotSubscribed;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,64 +28,77 @@ Route::view('profile', 'profile')
     ->middleware(['auth', 'hasboard'])
     ->name('profile');
 
+Route::view('/terms', 'terms')
+    ->name('terms');
+
 // Route::get('create-board', function() {
 //     return view('boards/create');
 // })
 // ->middleware(['auth'])
 // ->name('board.create');
 
-Route::get('/board/{slug}', function($slug) {
-    $board = Board::where('slug', $slug)
-        ->firstOrFail();
-
-    $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
-
-    $logoUrl = '';
-    $logo = $board->getFirstMedia('companylogo');
-    if($logo) {
-        $logoUrl = $board->getFirstMedia('companylogo')->getFullUrl();
-    }
-
-    $websiteUrl = '';
-    if(isset($board?->settings['website']) && $board?->settings['website']) {
-        $websiteUrl = 'https://'.$board?->settings['website'];
-    }
-
-    $radius = 'rounded-xl';
-    if(isset($board?->settings['testimonials']['radius'])) {
-        $radius = $board?->settings['testimonials']['radius'];
-    }
-
-    return view('boards.board', [
-        'slug' => $board->slug,
-        'testimonails' => $testimonails,
-        'logoUrl' => $logoUrl,
-        'websiteUrl' => $websiteUrl,
-        'radius' => $radius
-    ]);
-})
-->name('board');
-
-Route::get('/iframe/{slug}', function($slug) {
-    $board = Board::where('slug', $slug)
-        ->firstOrFail();
-
-    $testimonails = $board->testimonials()->where('status', 'accepted')->orderBy('created_at', 'desc')->get();
-    $isIframe = true;
-
-    $radius = 'rounded-xl';
-    if(isset($board?->settings['testimonials']['radius'])) {
-        $radius = $board?->settings['testimonials']['radius'];
-    }
-
-    return view('boards.iframe', [
-        'slug' => $board->slug,
-        'testimonails' => $testimonails,
-        'isIframe' => $isIframe,
-        'radius' => $radius,
-    ]);
-})
-->name('board.iframe');
+Route::middleware([NotSubscribed::class])->group(function () {
+    Route::get('/board/{slug}', function($slug, Request $request) {
+        $board = Board::where('slug', $slug)
+            ->firstOrFail();
+    
+        $testimonails = $board->testimonials()
+            ->where('status', 'accepted')
+            ->orderBy('created_at', 'desc')
+            ->limit($request->get('maxTestimonials'))
+            ->get();
+    
+        $logoUrl = '';
+        $logo = $board->getFirstMedia('companylogo');
+        if($logo) {
+            $logoUrl = $board->getFirstMedia('companylogo')->getFullUrl();
+        }
+    
+        $websiteUrl = '';
+        if(isset($board?->settings['website']) && $board?->settings['website']) {
+            $websiteUrl = 'https://'.$board?->settings['website'];
+        }
+    
+        $radius = 'rounded-xl';
+        if(isset($board?->settings['testimonials']['radius'])) {
+            $radius = $board?->settings['testimonials']['radius'];
+        }
+    
+        return view('boards.board', [
+            'slug' => $board->slug,
+            'testimonails' => $testimonails,
+            'logoUrl' => $logoUrl,
+            'websiteUrl' => $websiteUrl,
+            'radius' => $radius
+        ]);
+    })
+    ->name('board');
+    
+    Route::get('/iframe/{slug}', function($slug, Request $request) {
+        $board = Board::where('slug', $slug)
+            ->firstOrFail();
+    
+        $testimonails = $board->testimonials()
+            ->where('status', 'accepted')
+            ->orderBy('created_at', 'desc')
+            ->limit($request->get('maxTestimonials'))
+            ->get();
+        $isIframe = true;
+    
+        $radius = 'rounded-xl';
+        if(isset($board?->settings['testimonials']['radius'])) {
+            $radius = $board?->settings['testimonials']['radius'];
+        }
+    
+        return view('boards.iframe', [
+            'slug' => $board->slug,
+            'testimonails' => $testimonails,
+            'isIframe' => $isIframe,
+            'radius' => $radius,
+        ]);
+    })
+    ->name('board.iframe');
+});
 
 Route::get('/form/{slug}', function($slug) {
     $board = Board::where('slug', $slug)

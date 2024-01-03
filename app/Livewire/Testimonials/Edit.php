@@ -44,12 +44,23 @@ class Edit extends Component
         } else {
             $this->avatar = $this->initialsUrl;
         }
+
+        $possibleAvatars = [$this->initialsUrl, $this->gravitarUrl];
+
+        if(! in_array($this->avatar, $possibleAvatars)) {
+            $this->avatar = $this->initialsUrl;
+        }
     }
 
     public function submit() {
+        $possibleAvatars = [$this->initialsUrl, $this->gravitarUrl];
+
+        if(! in_array($this->avatar, $possibleAvatars)) {
+            $this->avatar = $this->initialsUrl;
+        }
+
         $rules = [
             'status' => ['required', Rule::in(['pending', 'accepted', 'declined'])],
-            'avatar' => [Rule::in([$this->initialsUrl, $this->gravitarUrl])]
         ];
 
         if($this->isSubscribed) {
@@ -87,6 +98,10 @@ class Edit extends Component
 
         $this->testimonialModal->status = $this->status;
         $this->testimonialModal->image_to_use = $this->avatar;
+        $this->testimonialModal->full_name = $this->fullName;
+        $this->testimonialModal->company = $this->company;
+        $this->testimonialModal->job_position = $this->jobPosition;
+        $this->testimonialModal->testimonial = $this->testimonial;
         $this->testimonialModal->save();
 
         $this->js('
