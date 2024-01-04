@@ -21,10 +21,16 @@ class Settings extends Component
 
     public $radius = 'rounded-xl';
 
+    public $isSubscribed = false;
+
     public function mount() {
         if(session('slug-updated')) {
             $this->showSuccess();
         }
+
+        $user = auth()?->user();
+
+        $this->isSubscribed = $user?->subscribed();
 
         $board = $this->board;
 
@@ -46,7 +52,8 @@ class Settings extends Component
     }
 
     public function submit() {
-        $this->validate([
+
+        $rules = [
             'company' => ['required', 'max:255', 'string'],
             'website' => ['nullable', 'max:255', 'string'],
             'testimonialLimit' => ['numeric', 'min:1', 'max:1000', 'nullable'],
@@ -54,14 +61,26 @@ class Settings extends Component
                 'nullable',
                 File::types(['jpeg', 'jpg', 'png', 'svg'])
                     ->max(3 * 1024)
-            ],
-            'radius' => [
-                Rule::in(['','rounded-md', 'rounded-lg', 'rounded-xl'])
             ]
-        ], [
+        ];
+
+        $messages = [
             'logo.max' => 'The logo field must not be greater than 3 megabytes.',
-            'radius.in' => 'Please select a border radius.',
-        ]);
+        ];
+
+        if($this->isSubscribed) {
+            $rules = array_merge($rules, [
+                    'radius' => [
+                    Rule::in(['','rounded-md', 'rounded-lg', 'rounded-xl'])
+                ]
+            ]);
+
+            $messages = array_merge($messages, [
+                'radius.in' => 'Please select a border radius.',
+            ]);
+        }
+
+        $this->validate($rules, $messages);
 
         // $this->board->name = $this->company;
         // $this->board->settings['testimonials']['limit'] = $this->testimonialLimit;
@@ -76,7 +95,6 @@ class Settings extends Component
                 'website' => $this->website,
             ]
         ]);
-
 
 
         if($this->logo) {

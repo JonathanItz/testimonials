@@ -51,7 +51,7 @@
                 <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Board Name</label>
                 <div class="mt-2">
                     <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
-                        <input autofocus wire:model="company" type="text" name="company" id="company" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Your Company Name">
+                        <input wire:model="company" type="text" name="company" id="company" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Your Company Name">
                     </div>
                     <span class="text-gray-700 text-xs font-medium">
                         Updating this will change the board URL as well.
@@ -89,11 +89,17 @@
                     Testimonial Styles
                 </h2>
 
+                @if (! $isSubscribed)
+                    <p>
+                        <span class="text-xs leading-4 block mt-2 font-medium text-gray-500">To customize testimonial styles, consider <a href="/billing" class="text-neutral font-medium hover:underline">upgrading to our premium subscription</a>.</span>
+                    </p>
+                @endif
+
                 <div class="mt-4">
                     <label for="limit" class="block text-sm font-medium leading-6 text-gray-900">Border Radius</label>
                     <div class="mt-2">
                         <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
-                            <select wire:model="radius" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+                            <select wire:model="radius" {{$isSubscribed ?:'disabled'}} class="{{$isSubscribed ?:'cursor-not-allowed'}} block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
                                 <option value="">No border radius</option>
                                 <option value="rounded-md">Small</option>
                                 <option value="rounded-lg">Medium</option>
