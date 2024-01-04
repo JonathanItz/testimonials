@@ -23,7 +23,41 @@
             </div>
         <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32"></div>
         </div>
-    </div>         
+    </div>
+
+    <div class="bg-white py-16 sm:py-24">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="relative isolate flex flex-col gap-10 overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:flex-row xl:items-center xl:py-32">
+            <h2 class="max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl xl:max-w-none xl:flex-auto">Have questions, concerns or requests?</h2>
+            <div class="w-full max-w-md">
+                <div class="flex flex-col gap-6 text-white">
+                    <div>
+                        <p>
+                            Feel free to reach out to us at
+                        </p>
+                        <p>
+                            <a href="mailto:hello@lemonbestie.com" class="font-semibold text-primary text-2xl hover:underline">hello@lemonbestie.com</a>
+                        </p>
+                    </div>
+                    {{-- <p>
+                        We're here to help your testimonials shine!
+                    </p> --}}
+                </div>
+                {{-- <p class="mt-4 text-sm leading-6 text-gray-300">We care about your data. Read our <a href="#" class="font-semibold text-white">privacy&nbsp;policy</a>.</p> --}}
+            </div>
+            <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2" aria-hidden="true">
+                <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
+                <defs>
+                    <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(512)">
+                    <stop stop-color="#7775D6" />
+                    <stop offset="1" stop-color="#E935C1" stop-opacity="0" />
+                    </radialGradient>
+                </defs>
+            </svg>
+        </div>
+        </div>
+    </div>
+  
     
     <div class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl" aria-hidden="true">
@@ -122,5 +156,41 @@
 
         </div>
     </div>
+
+    <div class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl lg:mx-0">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">What Sets Us Apart</h2>
+            <p class="mt-6 text-lg leading-8 text-gray-600">At Lemon Bestie, we stand out by offering seamless integration, trust-building capabilities through authentic testimonials, a user-friendly platform, and customizable options to enhance your brand's online presence effortlessly.</p>
+          </div>
+          <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none">
+            <div>
+              <dt class="font-semibold text-gray-900">🍋 Seamless Integration.</dt>
+              <dd class="mt-1 text-gray-600">Easily embed testimonials on your website using our intuitive iframes, or link to your dedicated testimonial board hosted on Lemon Bestie.</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-gray-900">🍋 Build Trust.</dt>
+              <dd class="mt-1 text-gray-600">Leverage the positive experiences of your clients and customers to build trust with potential prospects. Authentic testimonials speak volumes.</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-gray-900">🍋 User-Friendly Platform.</dt>
+              <dd class="mt-1 text-gray-600">Our user-friendly platform ensures that collecting, managing, and displaying testimonials is a hassle-free experience. No tech headaches, just results.</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-gray-900">🍋 Customization Options.</dt>
+              <dd class="mt-1 text-gray-600">Tailor the appearance of your testimonials to match your brand. We provide customization options to make sure your testimonials look and feel just right.</dd>
+            </div>
+            {{-- <div>
+              <dt class="font-semibold text-gray-900">Powerful API.</dt>
+              <dd class="mt-1 text-gray-600">Sit minus expedita quam in ullam molestiae dignissimos in harum. Tenetur dolorem iure. Non nesciunt dolorem veniam necessitatibus laboriosam voluptas perspiciatis error.</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-gray-900">Database backups.</dt>
+              <dd class="mt-1 text-gray-600">Ipsa in earum deserunt aut. Quos minus aut animi et soluta. Ipsum dicta ut quia eius. Possimus reprehenderit iste aspernatur ut est velit consequatur distinctio.</dd> --}}
+            </div>
+          </dl>
+        </div>
+      </div>
+      
 
 </x-app-layout>
