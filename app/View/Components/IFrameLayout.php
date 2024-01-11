@@ -2,17 +2,25 @@
 
 namespace App\View\Components;
 
+use Closure;
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use Illuminate\View\View;
 
 class IframeLayout extends Component
 {
     /**
-     * Get the view / contents that represents the component.
+     * Create a new component instance.
      */
-    public function render(): View
+    public function __construct()
     {
-        dd('yaya');
+        //
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
+    {
         return view('layouts.iframe');
     }
 }
