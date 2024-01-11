@@ -1,9 +1,17 @@
 <div>
     <x-slot name="header">
         <div class="flex justify-between flex-col md:flex-row gap-2">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ $name }} Board
-            </h2>
+            <div>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ $name }} Board
+                </h2>
+    
+                @if (auth()->user()->subscription()->ends_at)
+                    <span class="text-sm">
+                        Membership ends on <span class="font-bold">{{ auth()->user()->subscription()->ends_at->format('M dS, Y') }}</span>
+                    </span>
+                @endif
+            </div>
 
             <div>
                 <a href="{{route('boards.settings', [$slug])}}" wire:navigate class="group flex items-center gap-2 text-neutral">
