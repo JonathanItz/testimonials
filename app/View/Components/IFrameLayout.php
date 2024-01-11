@@ -12,6 +12,6 @@ class IframeLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.iframe');
+        return view('components.iframe');
     }
 }
