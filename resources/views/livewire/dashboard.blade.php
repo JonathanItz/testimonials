@@ -6,7 +6,7 @@
                     {{ $name }} Board
                 </h2>
     
-                @if (auth()->user()->subscription()->ends_at)
+                @if (auth()?->user()?->subscription()?->ends_at)
                     <span class="text-sm">
                         Membership ends on <span class="font-bold">{{ auth()->user()->subscription()->ends_at->format('M dS, Y') }}</span>
                     </span>
