@@ -84,7 +84,7 @@
                             </div>
                             <div class="text-sm leading-6">
                                 <label for="tos" class="font-medium text-gray-900">Terms of Service<span class="text-red-400">*</span></label>
-                                <p class="text-gray-500">I have read and agree to the <a href="#" class="text-primary">terms of service</a>.</p>
+                                <p class="text-gray-500">I have read and agree to the <a href="{{route('terms')}}" class="text-primary">terms of service</a>.</p>
                             </div>
                         </div>
                     </div>

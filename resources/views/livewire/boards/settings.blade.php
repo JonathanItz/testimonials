@@ -26,7 +26,7 @@
                             />
                         @else
                             @if ($logo)
-                                <img class="w-32 object-cover rounded-md" src="{{$logo->temporaryUrl()}}" alt="Current company logo" />
+                                <img class="w-32 object-cover rounded-md after:hidden before:hidden" src="{{$logo->temporaryUrl()}}" alt="Current company logo" />
                             @else
                             <h4 class="text-sm font-medium">No image selected</h4>
                             @endif
