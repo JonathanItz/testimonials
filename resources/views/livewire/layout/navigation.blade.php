@@ -136,8 +136,14 @@ new class extends Component
                 </div>
             </div>
         @else
-            <div>
-                Logged out
+            <div class="space-y-1">
+                <x-responsive-nav-link :href="route('login')" wire:navigate>
+                    {{ __('Login') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{route('register')}}" wire:navigate>
+                    {{ __('Register') }}
+                </x-responsive-nav-link>
             </div>
         @endauth
     </div>
