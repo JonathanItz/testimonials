@@ -140,7 +140,7 @@ return [
                 [
                     'name' => 'Premium',
                     'short_description' => 'Premium membership to Lemon Bestie allows more features for your testimonials.',
-                    'monthly_id' => 'price_1OUAqUFL1DghbxQeuTFqkseq',
+                    'monthly_id' => env('PREMIUM_PRICE_ID'),
                     // 'yearly_id' => 'price_id',
                     'features' => [
                         // 'Feature 1',
