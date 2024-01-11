@@ -13,6 +13,7 @@ class IframeLayout extends Component
      */
     public function render(): View|Closure|string
     {
+        dd('yaya');
         return view('layouts.iframe');
     }
 }
