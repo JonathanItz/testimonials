@@ -21,6 +21,6 @@ class iframe extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.layouts.iframe');
+        return view('layouts.iframe');
     }
 }
