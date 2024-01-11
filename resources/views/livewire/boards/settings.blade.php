@@ -20,7 +20,7 @@
                     <div class="shrink-0">
                         @if ($existingLogo && ! $logo)
                             <img
-                            class="w-32 object-cover rounded-md"
+                            class="w-32 object-cover rounded-md after:hidden before:hidden"
                             src="{{$existingLogo}}"
                             alt="Current company logo"
                             />
