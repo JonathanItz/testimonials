@@ -148,7 +148,7 @@ Route::get('/testimonial/edit/{testimonial:id}', function(Testimonial $testimoni
         'limit' => $limit,
     ]);
 })
-->middleware(['auth'])
+->middleware(['auth', 'verified'])
 ->name('testimonial.edit');
 
 Route::get('/settings/{slug}', function($slug) {
@@ -166,7 +166,7 @@ Route::get('/settings/{slug}', function($slug) {
         'board' => $board
     ]);
 })
-->middleware(['auth'])
+->middleware(['auth', 'verified'])
 ->name('boards.settings');
 
 require __DIR__.'/auth.php';
