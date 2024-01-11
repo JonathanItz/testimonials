@@ -8,10 +8,11 @@ use Illuminate\View\View;
 class IframeLayout extends Component
 {
     /**
-     * Get the view / contents that represent the component.
+     * Get the view / contents that represents the component.
      */
-    public function render(): View|string
+    public function render(): View
     {
+        dd('yaya');
         return view('layouts.iframe');
     }
 }
