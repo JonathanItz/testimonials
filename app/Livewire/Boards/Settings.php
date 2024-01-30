@@ -19,18 +19,10 @@ class Settings extends Component
 
     public $testimonialLimit = 1000;
 
-    public $radius = 'rounded-xl';
-
-    public $isSubscribed = false;
-
     public function mount() {
         if(session('slug-updated')) {
             $this->showSuccess();
         }
-
-        $user = auth()?->user();
-
-        $this->isSubscribed = $user?->subscribed();
 
         $board = $this->board;
 
@@ -68,22 +60,7 @@ class Settings extends Component
             'logo.max' => 'The logo field must not be greater than 3 megabytes.',
         ];
 
-        if($this->isSubscribed) {
-            $rules = array_merge($rules, [
-                    'radius' => [
-                    Rule::in(['','rounded-md', 'rounded-lg', 'rounded-xl'])
-                ]
-            ]);
-
-            $messages = array_merge($messages, [
-                'radius.in' => 'Please select a border radius.',
-            ]);
-        }
-
         $this->validate($rules, $messages);
-
-        // $this->board->name = $this->company;
-        // $this->board->settings['testimonials']['limit'] = $this->testimonialLimit;
 
         $this->board->update([
             'name' => $this->company,
