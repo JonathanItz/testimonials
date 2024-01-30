@@ -5,6 +5,12 @@
         </h2>
     </x-slot> --}}
 
+    @if ($name !== 'Lemon Bestie')
+        @slot( 'title' )
+            {{ $name }}
+        @endslot
+    @endif
+
     @if ($logoUrl)
         <div class="flex justify-center pt-8">
             @if ($websiteUrl)

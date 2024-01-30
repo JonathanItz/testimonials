@@ -4,7 +4,6 @@ use App\Models\Board;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\NotSubscribed;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +36,7 @@ Route::view('/terms', 'terms')
 // ->middleware(['auth'])
 // ->name('board.create');
 
-Route::middleware([NotSubscribed::class])->group(function () {
+Route::middleware(['notSubscribed'])->group(function () {
     Route::get('/board/{slug}', function($slug, Request $request) {
         $board = Board::where('slug', $slug)
             ->firstOrFail();
@@ -65,6 +64,7 @@ Route::middleware([NotSubscribed::class])->group(function () {
         }
     
         return view('boards.board', [
+            'name' => $board->name,
             'slug' => $board->slug,
             'testimonails' => $testimonails,
             'logoUrl' => $logoUrl,
