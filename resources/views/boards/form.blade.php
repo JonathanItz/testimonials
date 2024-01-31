@@ -26,7 +26,22 @@
     @endif
 
     <div
-    x-data="steps"
+    x-data="{
+        step: 1,
+
+        goToStep(step) {
+            this.$refs.stepContainer.style.opacity = 0
+
+            setTimeout(() => {
+                this.$refs.stepContainer.style.opacity = 1
+                this.step = step
+            }, 300)
+        },
+
+        init() {
+            window.goToStep = this.goToStep
+        }
+    }"
     x-ref="stepContainer"
     class="transition-opacity"
     >
@@ -51,8 +66,8 @@
             </div>
         </div>
 
-        <div class="max-w-xl mx-auto sm:px-6 lg:px-8 py-20">
-            <div x-show="step === 3" style="display:none;" class="bg-white shadow-lg border border-gray-200 sm:rounded-xl px-4 py-6 sm:p-8 transition-opacity">
+        <div class="max-w-xl mx-auto sm:px-6 lg:px-8 py-20" x-show="step === 3" style="display:none;">
+            <div class="bg-white shadow-lg border border-gray-200 sm:rounded-xl px-4 py-6 sm:p-8 transition-opacity">
                 <div class="text-center">
                     <h2 class="text-xl font-semibold tracking-wide">Thank you for submitting your testimonial 🎉</h2>
                     <div class="mt-4">
@@ -65,25 +80,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('steps', () => ({
-                step: 1,
-    
-                goToStep(step) {
-                    this.$refs.stepContainer.style.opacity = 0
-
-                    setTimeout(() => {
-                        this.$refs.stepContainer.style.opacity = 1
-                        this.step = step
-                    }, 300)
-                },
-
-                init() {
-                    window.goToStep = this.goToStep
-                }
-            }))
-        })
-    </script>
 </x-board-layout>
