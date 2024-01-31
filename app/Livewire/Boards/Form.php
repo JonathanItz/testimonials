@@ -15,8 +15,6 @@ class Form extends Component
 
     public $limit = 1000;
 
-    public bool $termsOfService;
-
     public function submit() {
         $this->validate([
             'fullName' => ['required', 'string', 'max:255'],
@@ -24,7 +22,6 @@ class Form extends Component
             'jobPosition' => ['nullable', 'string', 'max:255'],
             'testimonial' => ['required', 'string', "max:$this->limit"],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'termsOfService' => ['required', 'accepted'],
         ]);
 
         $testimonail = Testimonial::create([

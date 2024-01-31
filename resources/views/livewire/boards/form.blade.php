@@ -8,8 +8,7 @@
                         <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
                     </div>
 
-                    <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-    
+                    <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 mt-6">
                         <div class="sm:col-span-4">
                             <label for="full_name" class="block text-sm font-medium leading-6 text-gray-900">Name<span class="text-red-400">*</span></label>
                             <div class="mt-2">
@@ -50,14 +49,14 @@
         </div>
     
         <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
-            <div class="px-4 sm:px-0">
-                <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
-                <p class="mt-1 text-sm leading-6 text-gray-600">This information is not displayed publicly.</p>
-            </div>
-    
-            <div class="bg-white shadow-sm ring-1 ring-slate-200 sm:rounded-xl md:col-span-2">
+            <div class="bg-white shadow-sm ring-1 ring-slate-200 sm:rounded-xl md:col-span-3">
                 <div class="px-4 py-6 sm:p-8">
-                    <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                    <div class="px-4 sm:px-0">
+                        <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+                        <p class="mt-1 text-sm leading-6 text-gray-600">This information is not displayed publicly.</p>
+                    </div>
+
+                    <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 mt-6">
     
                         <div class="sm:col-span-4">
                             <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address<span class="text-red-400">*</span></label>
@@ -70,7 +69,7 @@
             </div>
         </div>
     
-        <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
+        {{-- <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
             <div class="px-4 sm:px-0">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Terms of Service</h2>
             </div>
@@ -90,7 +89,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     
         @if ($errors->any())
             <div class="bg-red-100 mt-6 rounded-xl border border-red-200 px-6 py-4">
