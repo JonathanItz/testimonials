@@ -115,7 +115,7 @@
             <div class="mt-4">
                 <p class="text-gray-600 font-medium">Your testimonial is under review and could take a few days to be accepted.</p>
                 @if ($websiteUrl)
-                    <a href="{{$websiteUrl}}" class="rounded-full bg-primary hover:bg-primary/80 transition-colors px-4 py-1.5 mt-8 inline-block">Back to Website</a>
+                    <a href="{{$websiteUrl}}" class="rounded-full bg-primary hover:bg-primary/80 transition-colors px-5 py-2 mt-8 inline-block font-semibold text-white">Back to Website</a>
                 @endif
             </div>
         </div>
