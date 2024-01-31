@@ -8,20 +8,27 @@
     <div class="bg-white">
         <div class="relative isolate overflow-hidden bg-gradient-to-b from-primary/20">
             <div class="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-primary/10 ring-1 ring-primary sm:-mr-80 lg:-mr-96" aria-hidden="true"></div>
-            <div class="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
+            <div class="mx-auto max-w-7xl px-6 py-12 sm:py-40 lg:px-8">
                 <div class="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
-                    <div>
-                        <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">Lemon Bestie</h1>
-                        <h2 class="max-w-2xl text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:col-span-2 xl:col-auto">Elevate Connections with Authentic Testimonials</h2>
-                    </div>
-                    <div class="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-                        <p class="text-lg leading-8 text-gray-600">Unlock the power of authentic testimonials with Lemon Bestie! We understand the impact that genuine feedback can have on your business, and that's why we've created a platform to make collecting and showcasing testimonials a breeze.</p>
+                    <div class="max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
+                        <div class="mb-6">
+                            <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">Lemon Bestie</h1>
+                            {{-- <h2 class="max-w-2xl text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:col-span-2 xl:col-auto">Elevate Connections with Testimonials</h2> --}}
+                        </div>
+                        <p class="text-lg leading-6 text-gray-600">Automate the testimonial experience. Easily collect and display testimonials on your website in <b>3</b> simple steps:</p>
+                        <ol class="mt-8 list-decimal pl-5 font-medium text-neutral">
+                            <li>Register for free 😏</li>
+                            <li>Copy/paste the iframe code onto your website 💻</li>
+                            <li>Watch the testimonials come in 😎</li>
+                        </ol>
                         <div class="mt-10 flex items-center gap-x-6">
                         <a href="{{route('register')}}" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">Get started</a>
-                        <a href="{{route('login')}}" class="text-sm font-semibold leading-6 text-gray-900 focus-visible:outline-secondary">Login <span aria-hidden="true">→</span></a>
+                        <a href="{{route('login')}}" class="text-sm font-semibold leading-6 text-gray-900 focus-visible:outline-secondary group">
+                            Login <span class="transition-all inline-block group-hover:translate-x-2" aria-hidden="true">→</span>
+                        </a>
                         </div>
                     </div>
-                    <img src="{{asset('/assets/images/connecting-worldwide.svg')}}" alt="" class="mt-10 aspect-[6/5] w-full max-w-lg rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2">
+                    <img src="{{asset('/assets/images/connecting-worldwide.svg')}}" alt="" class="lg:max-w-none max-w-lg mt-10 lg:-mt-16 w-full xl:row-end-2 xl:row-span-2">
                 </div>
             </div>
         <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32"></div>
@@ -40,7 +47,7 @@
 
         <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
             <div class="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 bg-white/60 sm:mx-8 lg:mx-0 rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl">
-                <h3 id="tier-hobby" class="text-base font-semibold leading-7 text-primary">Hobby</h3>
+                <h3 id="tier-starter" class="text-base font-semibold leading-7 text-primary">Starter</h3>
                 <p class="mt-4 flex items-baseline gap-x-2">
                 <span class="text-5xl font-bold tracking-tight text-gray-900">Free</span>
                 {{-- <span class="text-base text-gray-500">/month</span> --}}
@@ -72,7 +79,7 @@
                         Custom Logo
                     </li>
                 </ul>
-                <a href="{{'register'}}" aria-describedby="tier-hobby" class="mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 text-primary ring-1 ring-inset ring-primary hover:ring-primary focus-visible:outline-primary">Get started today</a>
+                <a href="{{'register'}}" aria-describedby="tier-starter" class="mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 text-primary ring-1 ring-inset ring-primary hover:ring-primary focus-visible:outline-primary">Get started today</a>
             </div>
 
             <div class="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-gray-900 shadow-2xl">
