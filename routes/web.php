@@ -58,9 +58,26 @@ Route::middleware(['notSubscribed'])->group(function () {
             $websiteUrl = 'https://'.$board?->settings['website'];
         }
     
+        $testimonialSettings = $board?->settings['testimonials'];
+
+        $border = 'border';
+        if(isset($testimonialSettings['border'])) {
+            $border = $testimonialSettings['border'];
+        }
+
+        $borderColor = '#e5e7eb';
+        if(isset($testimonialSettings['borderColor'])) {
+            $borderColor = $testimonialSettings['borderColor'];
+        }
+
         $radius = 'rounded-xl';
-        if(isset($board?->settings['testimonials']['radius'])) {
-            $radius = $board?->settings['testimonials']['radius'];
+        if(isset($testimonialSettings['radius'])) {
+            $radius = $testimonialSettings['radius'];
+        }
+
+        $shadow = 'shadow-md';
+        if(isset($testimonialSettings['shadow'])) {
+            $shadow = $testimonialSettings['shadow'];
         }
     
         return view('boards.board', [
@@ -69,7 +86,10 @@ Route::middleware(['notSubscribed'])->group(function () {
             'testimonails' => $testimonails,
             'logoUrl' => $logoUrl,
             'websiteUrl' => $websiteUrl,
-            'radius' => $radius
+            'radius' => $radius,
+            'shadow' => $shadow,
+            'border' => $border,
+            'borderColor' => $borderColor,
         ]);
     })
     ->name('board');
@@ -84,10 +104,27 @@ Route::middleware(['notSubscribed'])->group(function () {
             ->limit($request->get('maxTestimonials'))
             ->get();
         $isIframe = true;
-    
+
+        $testimonialSettings = $board?->settings['testimonials'];
+
+        $border = 'border';
+        if(isset($testimonialSettings['border'])) {
+            $border = $testimonialSettings['border'];
+        }
+
+        $borderColor = '#e5e7eb';
+        if(isset($testimonialSettings['borderColor'])) {
+            $borderColor = $testimonialSettings['borderColor'];
+        }
+
         $radius = 'rounded-xl';
-        if(isset($board?->settings['testimonials']['radius'])) {
-            $radius = $board?->settings['testimonials']['radius'];
+        if(isset($testimonialSettings['radius'])) {
+            $radius = $testimonialSettings['radius'];
+        }
+
+        $shadow = 'shadow-md';
+        if(isset($testimonialSettings['shadow'])) {
+            $shadow = $testimonialSettings['shadow'];
         }
     
         return view('boards.iframe', [
@@ -95,6 +132,9 @@ Route::middleware(['notSubscribed'])->group(function () {
             'testimonails' => $testimonails,
             'isIframe' => $isIframe,
             'radius' => $radius,
+            'shadow' => $shadow,
+            'border' => $border,
+            'borderColor' => $borderColor,
         ]);
     })
     ->name('board.iframe');

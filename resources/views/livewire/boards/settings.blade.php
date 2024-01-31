@@ -47,30 +47,32 @@
                 </div>
             </div>
 
-            <div class="sm:col-span-4">
-                <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Board Name</label>
-                <div class="mt-2">
-                    <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
-                        <input wire:model="company" type="text" name="company" id="company" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Your Company Name">
+            <div class="col-span-full grid md:grid-cols-8 gap-6">
+                <div class="sm:col-span-4">
+                    <label for="company" class="block text-sm font-medium leading-6 text-gray-900">Board Name</label>
+                    <div class="mt-2">
+                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
+                            <input wire:model="company" type="text" name="company" id="company" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Your Company Name">
+                        </div>
+                        <span class="text-gray-700 text-xs font-medium">
+                            Updating this will change the board URL as well.
+                        </span>
                     </div>
-                    <span class="text-gray-700 text-xs font-medium">
-                        Updating this will change the board URL as well.
-                    </span>
+                </div>
+    
+                <div class="sm:col-span-4">
+                    <label for="website" class="block text-sm font-medium leading-6 text-gray-900">Website URL</label>
+                    <div class="mt-2">
+                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
+                            <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">https://</span>
+                            <input wire:model="website" type="text" name="website" id="website" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="www.example.com">
+                        </div>
+                        <span class="text-gray-700 text-xs font-medium">
+                            Add your website URL so users can go back to your website.
+                        </span>
+                    </div>
                 </div>
             </div>
-
-            <div class="sm:col-span-4">
-                <label for="website" class="block text-sm font-medium leading-6 text-gray-900">Website URL</label>
-                <div class="mt-2">
-                    <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
-                        <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">https://</span>
-                        <input wire:model="website" type="text" name="website" id="website" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="www.example.com">
-                    </div>
-                    <span class="text-gray-700 text-xs font-medium">
-                        Add your website URL so users can go back to your website.
-                    </span>
-                </div>
-              </div>
     
             <div class="sm:col-span-4">
                 <label for="limit" class="block text-sm font-medium leading-6 text-gray-900">Set Max Character Length of Testimonials</label>
@@ -89,22 +91,66 @@
                     Testimonial Styles
                 </h2>
 
-                @if (! $isSubscribed)
+                {{-- @if (! $isSubscribed)
                     <p>
                         <span class="text-xs leading-4 block mt-2 font-medium text-gray-500">To customize testimonial styles, consider <a href="/billing" class="text-neutral font-medium hover:underline">upgrading to our premium subscription</a>.</span>
                     </p>
-                @endif
+                @endif --}}
 
-                <div class="mt-4">
-                    <label for="limit" class="block text-sm font-medium leading-6 text-gray-900">Border Radius</label>
-                    <div class="mt-2">
-                        <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
-                            <select wire:model="radius" {{$isSubscribed ?:'disabled'}} class="{{$isSubscribed ?:'cursor-not-allowed'}} block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
-                                <option value="">No border radius</option>
-                                <option value="rounded-md">Small</option>
-                                <option value="rounded-lg">Medium</option>
-                                <option value="rounded-xl">Large</option>
-                            </select>
+                <div class="mt-4 grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="limit" class="block text-sm font-medium leading-6 text-gray-900">Border Size</label>
+                        <div class="mt-2">
+                            <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
+                                <select wire:model="border" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+                                    <option value="">No border</option>
+                                    <option value="border">Small</option>
+                                    <option value="border-2">Medium</option>
+                                    <option value="border-4">Large</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="limit" class="block text-sm font-medium leading-6 text-gray-900">Border Color</label>
+                        <div class="mt-2">
+                            <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
+                                <input
+                                type="color"
+                                class="p-1 h-10 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 w-full"
+                                x-bind:value="$wire.borderColor"
+                                wire:model="borderColor"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="limit" class="block text-sm font-medium leading-6 text-gray-900">Border Radius</label>
+                        <div class="mt-2">
+                            <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
+                                <select wire:model="radius" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+                                    <option value="">No border radius</option>
+                                    <option value="rounded-md">Small</option>
+                                    <option value="rounded-lg">Medium</option>
+                                    <option value="rounded-xl">Large</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="limit" class="block text-sm font-medium leading-6 text-gray-900">Shadow</label>
+                        <div class="mt-2">
+                            <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
+                                <select wire:model="shadow" class="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+                                    <option value="">No shadow</option>
+                                    <option value="shadow-md">Small</option>
+                                    <option value="shadow-lg">Medium</option>
+                                    <option value="shadow-xl">Large</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,8 +160,9 @@
                         Example Testimonial
                     </h4>
                     <div
-                    class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.3%-1rem)] bg-white border border-gray-100 shadow-md p-6 mt-2"
-                    x-bind:class="$wire.radius"
+                    class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.3%-1rem)] bg-white p-6 mt-2 transition-all"
+                    x-bind:class="[$wire.radius, $wire.border, $wire.shadow]"
+                    x-bind:style="`border-color: ${$wire.borderColor}`"
                     >
                         <div class="flex gap-4">
                             <div class="shrink-0">

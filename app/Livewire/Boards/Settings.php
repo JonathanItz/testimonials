@@ -19,7 +19,12 @@ class Settings extends Component
 
     public $testimonialLimit = 1000;
 
+    public $border = 'border';
+    public $borderColor = '#e5e7eb';
     public $radius = 'rounded-xl';
+
+    public $shadow = 'shadow-md';
+
 
     public $isSubscribed = false;
 
@@ -37,12 +42,30 @@ class Settings extends Component
         $this->company = $board->name;
         $this->slug = $board->slug;
 
-        if(isset($board?->settings['testimonials']['limit'])) {
-            $this->testimonialLimit = $board?->settings['testimonials']['limit'];
+        $testimonialSettings = $board?->settings['testimonials'];
+
+        if(isset($testimonialSettings['limit'])) {
+            $this->testimonialLimit = $testimonialSettings['limit'];
         }
 
         if(isset($board?->settings['website'])) {
             $this->website = $board?->settings['website'];
+        }
+
+        if(isset($testimonialSettings['border'])) {
+            $this->border = $testimonialSettings['border'];
+        }
+
+        if(isset($testimonialSettings['borderColor'])) {
+            $this->borderColor = $testimonialSettings['borderColor'];
+        }
+
+        if(isset($testimonialSettings['radius'])) {
+            $this->radius = $testimonialSettings['radius'];
+        }
+
+        if(isset($testimonialSettings['shadow'])) {
+            $this->shadow = $testimonialSettings['shadow'];
         }
 
         $companyLogo = $board->getFirstMedia('companylogo');
@@ -52,7 +75,6 @@ class Settings extends Component
     }
 
     public function submit() {
-
         $rules = [
             'company' => ['required', 'max:255', 'string'],
             'website' => ['nullable', 'max:255', 'string'],
@@ -61,24 +83,19 @@ class Settings extends Component
                 'nullable',
                 File::types(['jpeg', 'jpg', 'png', 'svg'])
                     ->max(3 * 1024)
-            ]
+            ],
+            'border' => Rule::in(['','border', 'border-2', 'border-4']),
+            'borderColor' => ['string', 'max:7'],
+            'radius' => Rule::in(['','rounded-md', 'rounded-lg', 'rounded-xl']),
+            'shadow' => Rule::in(['','shadow-md', 'shadow-lg', 'shadow-xl']),
         ];
 
         $messages = [
             'logo.max' => 'The logo field must not be greater than 3 megabytes.',
+            'border.in' => 'Please select a border size.',
+            'radius.in' => 'Please select a border radius.',
+            'shadow.in' => 'Please select a shadow.',
         ];
-
-        if($this->isSubscribed) {
-            $rules = array_merge($rules, [
-                    'radius' => [
-                    Rule::in(['','rounded-md', 'rounded-lg', 'rounded-xl'])
-                ]
-            ]);
-
-            $messages = array_merge($messages, [
-                'radius.in' => 'Please select a border radius.',
-            ]);
-        }
 
         $this->validate($rules, $messages);
 
@@ -90,7 +107,10 @@ class Settings extends Component
             'settings' => [
                 'testimonials' => [
                     'limit' => $this->testimonialLimit,
-                    'radius' => $this->radius
+                    'border' => $this->border,
+                    'borderColor' => $this->borderColor,
+                    'radius' => $this->radius,
+                    'shadow' => $this->shadow,
                 ],
                 'website' => $this->website,
             ]
