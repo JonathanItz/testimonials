@@ -164,7 +164,8 @@ Route::get('/form/{slug}', function($slug) {
         'boardId' => $board->id,
         'logoUrl' => $logoUrl,
         'websiteUrl' => $websiteUrl,
-        'limit' => $limit
+        'limit' => $limit,
+        'name' => $board->name
     ]);
 })
 ->name('board.form');

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('testimonial', 1024);
             $table->string('image_to_use')->nullable();
             $table->string('email');
-            $table->boolean('tos_agreement');
             $table->string('status')->default('pending');
             $table->timestamps();
 

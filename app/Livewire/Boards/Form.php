@@ -9,7 +9,7 @@ use Livewire\Attributes\Locked;
 class Form extends Component
 {
     #[Locked]
-    public $boardId;
+    public $boardId, $name;
 
     public $fullName, $company, $jobPosition, $testimonial, $email, $websiteUrl;
 
@@ -30,11 +30,10 @@ class Form extends Component
             'company' => $this->company,
             'job_position' => $this->jobPosition,
             'testimonial' => $this->testimonial,
-            'email' => $this->email,
-            'tos_agreement' => true,
+            'email' => $this->email
         ]);
 
-        $this->js('nextStep(2)');
+        $this->js('goToStep(3)');
         $this->resetExcept('boardId', 'websiteUrl', 'limit');
     }
 
