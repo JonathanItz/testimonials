@@ -19,10 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome')
     ->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified', 'hasboard'])
-    ->name('dashboard');
-
 Route::view('profile', 'profile')
     ->middleware(['auth', 'hasboard'])
     ->name('profile');
@@ -166,44 +162,58 @@ Route::get('/form/{slug}', function($slug) {
 })
 ->name('board.form');
 
-Route::get('/testimonial/edit/{testimonial:id}', function(Testimonial $testimonial) {
-    $board = $testimonial->board()->first();
-    $user = auth()->user();
-    $userId = $user->id;
+Route::middleware(['isSubscribed'])->group(function () {
+    Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified', 'hasboard'])
+    ->name('dashboard');
 
-    if($userId !== $board->id) {
-        return abort(404);
-    }
+    Route::get('/testimonial/edit/{testimonial:id}', function(Testimonial $testimonial) {
+        $board = $testimonial->board()->first();
+        $user = auth()->user();
+        $userId = $user->id;
+    
+        if($userId !== $board->id) {
+            return abort(404);
+        }
+    
+        $limit = 1000;
+        if(isset($board?->settings['testimonials']['limit']) && $board?->settings['testimonials']['limit']) {
+            $limit = +$board?->settings['testimonials']['limit'];
+        }
+    
+        return view('testimonials.edit', [
+            'testimonial' => $testimonial,
+            'limit' => $limit,
+        ]);
+    })
+    ->middleware(['auth', 'verified'])
+    ->name('testimonial.edit');
+    
+    Route::get('/settings/{slug}', function($slug) {
+        $user = auth()->user();
+        $userId = $user->id;
+    
+        $board = Board::where('slug', $slug)
+            ->firstOrFail();
+    
+        if($userId !== $board->user_id) {
+            return abort(404);
+        }
+    
+        return view('boards.settings', [
+            'board' => $board
+        ]);
+    })
+    ->middleware(['auth', 'verified'])
+    ->name('board.settings');
+});
 
-    $limit = 1000;
-    if(isset($board?->settings['testimonials']['limit']) && $board?->settings['testimonials']['limit']) {
-        $limit = +$board?->settings['testimonials']['limit'];
-    }
 
-    return view('testimonials.edit', [
-        'testimonial' => $testimonial,
-        'limit' => $limit,
-    ]);
+
+Route::get('/membership', function() {
+    return view('membership');
 })
 ->middleware(['auth', 'verified'])
-->name('testimonial.edit');
-
-Route::get('/settings/{slug}', function($slug) {
-    $user = auth()->user();
-    $userId = $user->id;
-
-    $board = Board::where('slug', $slug)
-        ->firstOrFail();
-
-    if($userId !== $board->user_id) {
-        return abort(404);
-    }
-
-    return view('boards.settings', [
-        'board' => $board
-    ]);
-})
-->middleware(['auth', 'verified'])
-->name('boards.settings');
+->name('membership');
 
 require __DIR__.'/auth.php';

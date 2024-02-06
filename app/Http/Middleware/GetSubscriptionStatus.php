@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsSubscribed
+class GetSubscriptionStatus
 {
     /**
      * Handle an incoming request.
@@ -25,9 +25,10 @@ class IsSubscribed
             $isTrialUser = $user->onTrial();
         }
 
-        if(! $isSubscribed && ! $isTrialUser) {
-            return redirect()->route('membership');
-        }
+        View::share([
+            'isTrialUser' => $isTrialUser,
+            'isSubscribed' => $isSubscribed
+        ]);
 
         return $next($request);
     }

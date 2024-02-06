@@ -136,7 +136,7 @@ class Settings extends Component
 
         if($this->slug !== $this->board->slug) {
             session()->flash('slug-updated', true);
-            return $this->redirect(route('boards.settings', [$this->board->slug]), navigate: true);
+            return $this->redirect(route('board.settings', [$this->board->slug]), navigate: true);
         }
     }
 
