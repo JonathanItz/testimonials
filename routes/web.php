@@ -36,107 +36,105 @@ Route::view('/terms', 'terms')
 // ->middleware(['auth'])
 // ->name('board.create');
 
-Route::middleware(['isSubscribed'])->group(function () {
-    Route::get('/board/{slug}', function($slug, Request $request) {
-        $board = Board::where('slug', $slug)
-            ->firstOrFail();
-    
-        $testimonails = $board->testimonials()
-            ->where('status', 'accepted')
-            ->orderBy('created_at', 'desc')
-            ->get();
-    
-        $logoUrl = '';
-        $logo = $board->getFirstMedia('companylogo');
-        if($logo) {
-            $logoUrl = $board->getFirstMedia('companylogo')->getFullUrl();
-        }
-    
-        $websiteUrl = '';
-        if(isset($board?->settings['website']) && $board?->settings['website']) {
-            $websiteUrl = 'https://'.$board?->settings['website'];
-        }
-    
-        $testimonialSettings = $board?->settings['testimonials'];
+Route::get('/board/{slug}', function($slug, Request $request) {
+    $board = Board::where('slug', $slug)
+        ->firstOrFail();
 
-        $border = 'border';
-        if(isset($testimonialSettings['border'])) {
-            $border = $testimonialSettings['border'];
-        }
+    $testimonails = $board->testimonials()
+        ->where('status', 'accepted')
+        ->orderBy('created_at', 'desc')
+        ->get();
 
-        $borderColor = '#e5e7eb';
-        if(isset($testimonialSettings['borderColor'])) {
-            $borderColor = $testimonialSettings['borderColor'];
-        }
+    $logoUrl = '';
+    $logo = $board->getFirstMedia('companylogo');
+    if($logo) {
+        $logoUrl = $board->getFirstMedia('companylogo')->getFullUrl();
+    }
 
-        $radius = 'rounded-xl';
-        if(isset($testimonialSettings['radius'])) {
-            $radius = $testimonialSettings['radius'];
-        }
+    $websiteUrl = '';
+    if(isset($board?->settings['website']) && $board?->settings['website']) {
+        $websiteUrl = 'https://'.$board?->settings['website'];
+    }
 
-        $shadow = 'shadow-md';
-        if(isset($testimonialSettings['shadow'])) {
-            $shadow = $testimonialSettings['shadow'];
-        }
-    
-        return view('boards.board', [
-            'name' => $board->name,
-            'slug' => $board->slug,
-            'testimonails' => $testimonails,
-            'logoUrl' => $logoUrl,
-            'websiteUrl' => $websiteUrl,
-            'radius' => $radius,
-            'shadow' => $shadow,
-            'border' => $border,
-            'borderColor' => $borderColor,
-        ]);
-    })
-    ->name('board');
-    
-    Route::get('/iframe/{slug}', function($slug, Request $request) {
-        $board = Board::where('slug', $slug)
-            ->firstOrFail();
-    
-        $testimonails = $board->testimonials()
-            ->where('status', 'accepted')
-            ->orderBy('created_at', 'desc')
-            ->get();
-        $isIframe = true;
+    $testimonialSettings = $board?->settings['testimonials'];
 
-        $testimonialSettings = $board?->settings['testimonials'];
+    $border = 'border';
+    if(isset($testimonialSettings['border'])) {
+        $border = $testimonialSettings['border'];
+    }
 
-        $border = 'border';
-        if(isset($testimonialSettings['border'])) {
-            $border = $testimonialSettings['border'];
-        }
+    $borderColor = '#e5e7eb';
+    if(isset($testimonialSettings['borderColor'])) {
+        $borderColor = $testimonialSettings['borderColor'];
+    }
 
-        $borderColor = '#e5e7eb';
-        if(isset($testimonialSettings['borderColor'])) {
-            $borderColor = $testimonialSettings['borderColor'];
-        }
+    $radius = 'rounded-xl';
+    if(isset($testimonialSettings['radius'])) {
+        $radius = $testimonialSettings['radius'];
+    }
 
-        $radius = 'rounded-xl';
-        if(isset($testimonialSettings['radius'])) {
-            $radius = $testimonialSettings['radius'];
-        }
+    $shadow = 'shadow-md';
+    if(isset($testimonialSettings['shadow'])) {
+        $shadow = $testimonialSettings['shadow'];
+    }
 
-        $shadow = 'shadow-md';
-        if(isset($testimonialSettings['shadow'])) {
-            $shadow = $testimonialSettings['shadow'];
-        }
-    
-        return view('boards.iframe', [
-            'slug' => $board->slug,
-            'testimonails' => $testimonails,
-            'isIframe' => $isIframe,
-            'radius' => $radius,
-            'shadow' => $shadow,
-            'border' => $border,
-            'borderColor' => $borderColor,
-        ]);
-    })
-    ->name('board.iframe');
-});
+    return view('boards.board', [
+        'name' => $board->name,
+        'slug' => $board->slug,
+        'testimonails' => $testimonails,
+        'logoUrl' => $logoUrl,
+        'websiteUrl' => $websiteUrl,
+        'radius' => $radius,
+        'shadow' => $shadow,
+        'border' => $border,
+        'borderColor' => $borderColor,
+    ]);
+})
+->name('board');
+
+Route::get('/iframe/{slug}', function($slug, Request $request) {
+    $board = Board::where('slug', $slug)
+        ->firstOrFail();
+
+    $testimonails = $board->testimonials()
+        ->where('status', 'accepted')
+        ->orderBy('created_at', 'desc')
+        ->get();
+    $isIframe = true;
+
+    $testimonialSettings = $board?->settings['testimonials'];
+
+    $border = 'border';
+    if(isset($testimonialSettings['border'])) {
+        $border = $testimonialSettings['border'];
+    }
+
+    $borderColor = '#e5e7eb';
+    if(isset($testimonialSettings['borderColor'])) {
+        $borderColor = $testimonialSettings['borderColor'];
+    }
+
+    $radius = 'rounded-xl';
+    if(isset($testimonialSettings['radius'])) {
+        $radius = $testimonialSettings['radius'];
+    }
+
+    $shadow = 'shadow-md';
+    if(isset($testimonialSettings['shadow'])) {
+        $shadow = $testimonialSettings['shadow'];
+    }
+
+    return view('boards.iframe', [
+        'slug' => $board->slug,
+        'testimonails' => $testimonails,
+        'isIframe' => $isIframe,
+        'radius' => $radius,
+        'shadow' => $shadow,
+        'border' => $border,
+        'borderColor' => $borderColor,
+    ]);
+})
+->name('board.iframe');
 
 Route::get('/form/{slug}', function($slug) {
     $board = Board::where('slug', $slug)

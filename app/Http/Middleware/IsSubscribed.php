@@ -15,14 +15,20 @@ class IsSubscribed
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // $isSubscribed = auth()->user()?->subscribed();
+        $user = auth()?->user();
+        $isTrialUser = false;
+        $isSubscribed = false;
+        if($user) {
+            $isSubscribed = $user?->subscribed();
+            if(! $isSubscribed) {
+                $isTrialUser = $user->trial_ends_at ?true:false;
+            }
+        }
 
-        // $maxTestimonials = null;
-        // if(! $isSubscribed) {
-        //     $maxTestimonials = 10;
-        // }
-
-        // $request->merge(['maxTestimonials' => $maxTestimonials]);
+        $request->merge([
+            'isTrialUser' => $isTrialUser,
+            'isSubscribed' => $isSubscribed
+        ]);
 
         return $next($request);
     }

@@ -98,7 +98,7 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <div class="text-xs font-medium mt-2">
-            By creating an account, you agree to Lemon Bestie's <a href="{{route('terms')}}" class="font-semibold hover:underline">Terms of Service</a>.
+            By creating an account, you agree to Lemon Bestie's <a href="{{route('terms')}}" target="_blank" class="font-semibold hover:underline">Terms of Service</a>.
         </div>
 
         <div class="flex items-center justify-end mt-4">
