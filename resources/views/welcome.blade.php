@@ -49,7 +49,7 @@
                             </li>
                         </ol>
                         <div class="mt-10 flex items-center gap-x-6">
-                            <x-primary-link :link="route('register')" text="Register for free today →" />
+                            <x-primary-link :link="route('register')" text="Start your 30 day trial →" />
                             {{-- <a href="{{route('login')}}" class="text-sm font-semibold leading-6 text-gray-900 focus-visible:outline-secondary group">
                                 Login <span class="transition-all inline-block group-hover:translate-x-2" aria-hidden="true">→</span>
                             </a> --}}
@@ -147,7 +147,7 @@
                     Edit testimonials
                 </li>
                 </ul>
-                <x-primary-link text="Get started today" :link="route('register')" class="w-full block text-center mt-8" aria-describedby="tier-enterprise" />
+                <x-primary-link text="Start your 30 day trial today" :link="route('register')" class="w-full block text-center mt-8" aria-describedby="tier-enterprise" />
             </div>
 
         </div>
