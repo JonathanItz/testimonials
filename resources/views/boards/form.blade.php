@@ -47,7 +47,7 @@
     >
         <div class="py-20" x-show="step === 1">
             <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center">
+                <div class="bg-white p-4 sm:rounded-xl shadow-lg border border-gray-200 text-center">
                     <h1 class="text-xl font-semibold tracking-wide">Did you love {{$name}}?</h1>
                     <h3 class="text-slate-600">
                         Leave a testimonial to help us grow
@@ -66,15 +66,17 @@
             </div>
         </div>
 
-        <div class="max-w-xl mx-auto sm:px-6 lg:px-8 py-20" x-show="step === 3" style="display:none;">
-            <div class="bg-white shadow-lg border border-gray-200 sm:rounded-xl px-4 py-6 sm:p-8 transition-opacity">
-                <div class="text-center">
-                    <h2 class="text-xl font-semibold tracking-wide">Thank you for submitting your testimonial 🎉</h2>
-                    <div class="mt-4">
-                        {{-- <p class="text-gray-600 font-medium">Your testimonial is under review and could take a few days to be accepted.</p> --}}
-                        @if ($websiteUrl)
-                            <a href="{{$websiteUrl}}" class="rounded-full bg-primary hover:bg-primary/80 transition-colors px-5 py-2 mt-8 inline-block font-semibold text-white">Back to Website</a>
-                        @endif
+        <div class="py-20" x-show="step === 2" style="display: none;">
+            <div class="max-w-xl mx-auto" x-show="step === 3" style="display:none;">
+                <div class="bg-white shadow-lg border border-gray-200 sm:rounded-xl p-4 transition-opacity">
+                    <div class="text-center">
+                        <h2 class="text-xl font-semibold tracking-wide">Thank you for submitting your testimonial 🎉</h2>
+                        <div class="mt-4">
+                            {{-- <p class="text-gray-600 font-medium">Your testimonial is under review and could take a few days to be accepted.</p> --}}
+                            @if ($websiteUrl)
+                                <a href="{{$websiteUrl}}" class="rounded-full bg-primary hover:bg-primary/80 transition-colors px-5 py-2 mt-8 inline-block font-semibold text-white">Back to Website</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

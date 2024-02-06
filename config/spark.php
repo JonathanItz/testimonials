@@ -44,8 +44,8 @@ return [
     */
 
     'brand' =>  [
-        // 'logo' => realpath(__DIR__.'/../public/assets/images/logo.png'),
-        'color' => '#db82e5',
+        'logo' => realpath(__DIR__.'/../public/assets/images/logo.svg'),
+        'color' => '#050505',
     ],
 
     /*
@@ -105,11 +105,11 @@ return [
     */
 
     'receipt_data' => [
-        'vendor' => 'Your Product',
-        'product' => 'Your Product',
-        'street' => '111 Example St.',
-        'location' => 'Los Angeles, CA',
-        'phone' => '555-555-5555',
+        'vendor' => 'Premium',
+        'product' => 'Lemon Bestie',
+        // 'street' => '3901 SW Sawgrass Parkway',
+        'location' => 'Ankeny, Iowa',
+        // 'phone' => '555-555-5555',
     ],
 
     /*
@@ -131,11 +131,8 @@ return [
 
         'user' => [
             'model' => User::class,
-
-            'trial_days' => 5,
-
+            'trial_days' => 30,
             'default_interval' => 'monthly',
-
             'plans' => [
                 [
                     'name' => 'Premium',

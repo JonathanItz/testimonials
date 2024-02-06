@@ -19,7 +19,6 @@ class Testimonial extends Model
         'company',
         'job_position',
         'testimonial',
-        'email',
-        'tos_agreement'
+        'email'
     ];
 }

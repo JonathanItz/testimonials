@@ -6,11 +6,11 @@
                     {{ $name }} Board
                 </h2>
     
-                @if (auth()?->user()?->subscription()?->ends_at)
+                {{-- @if (auth()?->user()?->subscription()?->ends_at)
                     <span class="text-sm">
                         Membership ends on <span class="font-bold">{{ auth()->user()->subscription()->ends_at->format('M dS, Y') }}</span>
                     </span>
-                @endif
+                @endif --}}
             </div>
 
             <div>
@@ -27,7 +27,7 @@
         </div>
     </x-slot>
 
-    <div class="p-6 rounded-xl w-full shadow-md bg-white">
+    <div class="p-6 rounded-xl w-full shadow-lg border border-gray-200 bg-white">
         <div class="flex flex-col md:flex-row w-full gap-4">
             <div class="w-full">
                 <div class="text-gray-500 font-medium text-xs">
@@ -195,13 +195,13 @@
                         <span class="text-2xl md:text-4xl font-black text-neutral">
                             {{$accepted}}
                         </span>
-                        @if (! $isSubscribed)
+                        {{-- @if (! $isSubscribed)
                             /10
-                        @endif
+                        @endif --}}
                     </div>
-                    @if (! $isSubscribed)
+                    {{-- @if (! $isSubscribed)
                         <span class="text-xs leading-4 block mt-2 font-medium text-gray-500">To increase your accepted testimonials, consider <a href="/billing" class="text-neutral font-medium hover:underline">upgrading to our premium subscription</a>.</span>
-                    @endif
+                    @endif --}}
                     {{-- <div class="text-xs font-medium text-gray-500">21% more than last month</div> --}}
                 </div>
             </div>
@@ -254,7 +254,7 @@
         </div>
 
         <div class="col-span-12 md:col-span-8 lg:col-span-9">
-            <div id="testimonials" class="p-4 rounded-xl w-full shadow-md bg-white">
+            <div id="testimonials" class="p-4 rounded-xl w-full shadow-lg border border-gray-200 bg-white">
                 <div class="card-body">
                     <div class="max-w-sm mb-2 md:hidden">
                         <label for="status" class="block text-sm font-medium leading-6 text-gray-900">Status</label>
@@ -269,11 +269,11 @@
                         <ul role="list" class="space-y-2">
                             @foreach ($testimonials as $testimonial)
                                 @if ($testimonial->status === 'pending')
-                                    <x-pending-testimonial :testimonial="$testimonial" />
+                                    <x-dashboard.testimonials.pending-testimonial :testimonial="$testimonial" />
                                 @elseif($testimonial->status === 'accepted')
-                                    <x-accepted-testimonial :testimonial="$testimonial" />
+                                    <x-dashboard.testimonials.accepted-testimonial :testimonial="$testimonial" />
                                 @elseif($testimonial->status === 'declined')
-                                    <x-declined-testimonial :testimonial="$testimonial" />
+                                    <x-dashboard.testimonials.declined-testimonial :testimonial="$testimonial" />
                                 @endif
                             @endforeach
                         </ul>

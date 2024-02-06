@@ -15,8 +15,6 @@ class Edit extends Component
 
     public $fullName, $company, $jobPosition, $testimonial, $email, $status, $gravitarUrl, $initialsUrl, $avatar;
 
-    public $isSubscribed = false;
-
     public $limit = 1000;
 
     public function mount() {
@@ -28,8 +26,6 @@ class Edit extends Component
         $this->testimonial = $this->testimonialModal->testimonial;
         $this->email = $this->testimonialModal->email;
         $this->status = $this->testimonialModal->status;
-
-        $this->isSubscribed = $user?->subscribed();
 
         $emailHash = md5($this->email);
 
@@ -63,36 +59,12 @@ class Edit extends Component
             'status' => ['required', Rule::in(['pending', 'accepted', 'declined'])],
         ];
 
-        if($this->isSubscribed) {
-            $rules = array_merge($rules, [
-                'fullName' => ['required', 'string', 'max:255'],
-                'company' => ['nullable', 'string', 'max:255'],
-                'jobPosition' => ['nullable', 'string', 'max:255'],
-                'testimonial' => ['required', 'string', "max:$this->limit"],
-            ]);
-        } else {
-            $testimonailsCount = Testimonial::where('board_id', $this->testimonialModal->board_id)
-                ->where('status', 'accepted')
-                ->count();
-
-            
-            if($testimonailsCount >= 10 && $this->status === 'accepted') {
-                $this->js('
-                    Toastify({
-                        text: "You may only have up to 10 accepted testimonials on the free tier.",
-                        duration: 3000,
-                        close: true,
-                        stopOnFocus: true, // Prevents dismissing of toast on hover
-                        style: {
-                            background: "#f87171",
-                            borderRadius: "0.375rem"
-                        },
-                    }).showToast();
-                ');
-
-                return;
-            }
-        }
+        $rules = array_merge($rules, [
+            'fullName' => ['required', 'string', 'max:255'],
+            'company' => ['nullable', 'string', 'max:255'],
+            'jobPosition' => ['nullable', 'string', 'max:255'],
+            'testimonial' => ['required', 'string', "max:$this->limit"],
+        ]);
 
         $this->validate($rules);
 

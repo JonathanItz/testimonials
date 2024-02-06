@@ -12,14 +12,16 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Outfit', ...defaultTheme.fontFamily.sans],
+                display: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
 
             colors: {
-                "primary": "#db82e5",
+                "primary": "#FCEA2B",
+                "primary-hover": "#faed61",
                 "secondary": "#0ac5ff",
-                "accent": "#20788e",
-                "neutral": "#1a2128",
+                "accent": "#F5F1E3",
+                "neutral": "#050505",
                 "base-100": "#f9f9fb",
                 "info": "#1b9aee",
                 "success": "#51ecd4",

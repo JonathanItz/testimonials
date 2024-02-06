@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class NotSubscribed
+class IsSubscribed
 {
     /**
      * Handle an incoming request.
@@ -15,14 +15,14 @@ class NotSubscribed
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $isSubscribed = auth()->user()?->subscribed();
+        // $isSubscribed = auth()->user()?->subscribed();
 
-        $maxTestimonials = null;
-        if(! $isSubscribed) {
-            $maxTestimonials = 10;
-        }
+        // $maxTestimonials = null;
+        // if(! $isSubscribed) {
+        //     $maxTestimonials = 10;
+        // }
 
-        $request->merge(['maxTestimonials' => $maxTestimonials]);
+        // $request->merge(['maxTestimonials' => $maxTestimonials]);
 
         return $next($request);
     }

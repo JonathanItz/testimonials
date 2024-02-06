@@ -25,17 +25,12 @@ class Settings extends Component
 
     public $shadow = 'shadow-md';
 
-
-    public $isSubscribed = false;
-
     public function mount() {
         if(session('slug-updated')) {
             $this->showSuccess();
         }
 
         $user = auth()?->user();
-
-        $this->isSubscribed = $user?->subscribed();
 
         $board = $this->board;
 

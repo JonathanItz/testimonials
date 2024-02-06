@@ -36,7 +36,7 @@ Route::view('/terms', 'terms')
 // ->middleware(['auth'])
 // ->name('board.create');
 
-Route::middleware(['notSubscribed'])->group(function () {
+Route::middleware(['isSubscribed'])->group(function () {
     Route::get('/board/{slug}', function($slug, Request $request) {
         $board = Board::where('slug', $slug)
             ->firstOrFail();
@@ -44,7 +44,6 @@ Route::middleware(['notSubscribed'])->group(function () {
         $testimonails = $board->testimonials()
             ->where('status', 'accepted')
             ->orderBy('created_at', 'desc')
-            ->limit($request->get('maxTestimonials'))
             ->get();
     
         $logoUrl = '';
@@ -101,7 +100,6 @@ Route::middleware(['notSubscribed'])->group(function () {
         $testimonails = $board->testimonials()
             ->where('status', 'accepted')
             ->orderBy('created_at', 'desc')
-            ->limit($request->get('maxTestimonials'))
             ->get();
         $isIframe = true;
 

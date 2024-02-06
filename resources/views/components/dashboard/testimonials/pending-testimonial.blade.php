@@ -1,4 +1,4 @@
-<li class="relative flex items-center space-x-4 py-4">
+<li class="relative flex items-center space-x-4 p-2 hover:bg-gray-50 transition-all rounded-xl border border-transparent hover:border hover:border-gray-200">
     <div class="min-w-0 flex-auto">
         <div class="flex items-center gap-x-3">
         <div class="flex-none rounded-full p-1 text-yellow-500 bg-yellow-100/10">

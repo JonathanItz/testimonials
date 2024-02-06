@@ -8,27 +8,54 @@
     <div class="bg-white">
         <div class="relative isolate overflow-hidden bg-gradient-to-b from-primary/20">
             <div class="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-primary/10 ring-1 ring-primary sm:-mr-80 lg:-mr-96" aria-hidden="true"></div>
-            <div class="mx-auto max-w-7xl px-6 py-12 sm:py-40 lg:px-8">
+            <div class="mx-auto max-w-7xl px-6 py-12 sm:py-28 lg:px-8">
                 <div class="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
                     <div class="max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-                        <div class="mb-6">
-                            <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">Lemon Bestie</h1>
+                        <div class="">
+                            <h1 class="max-w-2xl text-4xl font-bold tracking-widest text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">
+                                Lemon Bestie
+                            </h1>
                             {{-- <h2 class="max-w-2xl text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:col-span-2 xl:col-auto">Elevate Connections with Testimonials</h2> --}}
                         </div>
-                        <p class="text-lg leading-6 text-gray-600">Automate the testimonial experience. Easily collect and display testimonials on your website in <b>3</b> simple steps:</p>
-                        <ol class="mt-8 list-decimal pl-5 font-medium text-neutral">
-                            <li>Register for free 😏</li>
-                            <li>Copy/paste the iframe code onto your website 💻</li>
-                            <li>Watch the testimonials come in 😎</li>
+                        <p class="text-lg leading-6 text-neutral/60 font-display">
+                            Lemon Bestie is here to make testimonials easy. With our main focus on testimonials, we believe there's no need to overcomplicate a very important part of your buyers decision making.
+                        </p>
+
+                        <h2 class="mt-20 text-neutral text-xl sm:text-2xl">
+                            Getting testimonials on your site with 3 steps
+                        </h2>
+                        <ol class="mt-8 font-medium text-neutral flex flex-col sm:flex-row gap-8 sm:gap-6 text-center">
+                            @php
+                                $stepClasses = 'bg-accent rounded-xl px-4 pb-4 pt-6 relative flex-0 w-full';
+                                $numberClasses = 'absolute -top-5 left-2 rounded-full border border-neutral w-10 h-10 bg-white/50 backdrop-blur-[0.5px] flex items-center justify-center';
+                            @endphp
+                            <li class="{{$stepClasses}}">
+                                <span class="{{$numberClasses}}">
+                                    1
+                                </span>
+                                Register for free
+                            </li>
+                            <li class="{{$stepClasses}}">
+                                <span class="{{$numberClasses}}">
+                                    2
+                                </span>
+                                Copy the iframe on your site
+                            </li>
+                            <li class="{{$stepClasses}}">
+                                <span class="{{$numberClasses}}">
+                                    3
+                                </span>
+                                Sit back and relax
+                            </li>
                         </ol>
                         <div class="mt-10 flex items-center gap-x-6">
-                        <a href="{{route('register')}}" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">Get started</a>
-                        <a href="{{route('login')}}" class="text-sm font-semibold leading-6 text-gray-900 focus-visible:outline-secondary group">
-                            Login <span class="transition-all inline-block group-hover:translate-x-2" aria-hidden="true">→</span>
-                        </a>
+                            <x-primary-link :link="route('register')" text="Register for free today →" />
+                            {{-- <a href="{{route('login')}}" class="text-sm font-semibold leading-6 text-gray-900 focus-visible:outline-secondary group">
+                                Login <span class="transition-all inline-block group-hover:translate-x-2" aria-hidden="true">→</span>
+                            </a> --}}
                         </div>
                     </div>
-                    <img src="{{asset('/assets/images/connecting-worldwide.svg')}}" alt="" class="lg:max-w-none max-w-lg mt-10 lg:-mt-16 w-full xl:row-end-2 xl:row-span-2">
+                    <img src="{{asset('/assets/images/homepage-images.png')}}" alt="" class="lg:max-w-none max-w-lg mt-10 w-full xl:row-end-2 xl:row-span-2">
                 </div>
             </div>
         <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32"></div>
@@ -40,17 +67,16 @@
         <div class="mx-auto aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
         </div>
         <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
-        <h2 class="text-base font-semibold leading-7 text-indigo-600">Pricing</h2>
+        <h2 class="text-base font-semibold leading-7 text-primary">Pricing</h2>
         <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">The right price for you, whoever you are</p>
         </div>
         <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">Unlock the perfect plan for your testimonial journey with Lemon Bestie's tailored pricing—crafted to match your needs and amplify the impact of your positive experiences.</p>
 
-        <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
-            <div class="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 bg-white/60 sm:mx-8 lg:mx-0 rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl">
+        <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0">
+            {{-- <div class="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 bg-white/60 sm:mx-8 lg:mx-0 rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl">
                 <h3 id="tier-starter" class="text-base font-semibold leading-7 text-primary">Starter</h3>
                 <p class="mt-4 flex items-baseline gap-x-2">
                 <span class="text-5xl font-bold tracking-tight text-gray-900">Free</span>
-                {{-- <span class="text-base text-gray-500">/month</span> --}}
                 </p>
                 <p class="mt-6 text-base leading-7 text-gray-600">The perfect plan if you&#039;re just getting started.</p>
                 <ul role="list" class="mt-8 space-y-3 text-sm leading-6 sm:mt-10 text-gray-600">
@@ -66,12 +92,6 @@
                         </svg>
                         Embed testimonials on your website
                     </li>
-                    {{-- <li class="flex gap-x-3">
-                        <svg class="h-6 w-5 flex-none text-primary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                        </svg>
-                        Customize board
-                    </li> --}}
                     <li class="flex gap-x-3">
                         <svg class="h-6 w-5 flex-none text-primary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
@@ -80,12 +100,12 @@
                     </li>
                 </ul>
                 <a href="{{'register'}}" aria-describedby="tier-starter" class="mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 text-primary ring-1 ring-inset ring-primary hover:ring-primary focus-visible:outline-primary">Get started today</a>
-            </div>
+            </div> --}}
 
             <div class="rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10 relative bg-gray-900 shadow-2xl">
                 <h3 id="tier-enterprise" class="text-base font-semibold leading-7 text-primary">Premium</h3>
                 <p class="mt-4 flex items-baseline gap-x-2">
-                <span class="text-5xl font-bold tracking-tight text-white">$9.99</span>
+                <span class="text-5xl font-bold tracking-tight text-white">$5</span>
                 <span class="text-base text-gray-400">/month</span>
                 </p>
                 <p class="mt-6 text-base leading-7 text-gray-300">Dedicated support and infrastructure for your company.</p>
@@ -127,7 +147,7 @@
                     Edit testimonials
                 </li>
                 </ul>
-                <a href="{{route('register')}}" aria-describedby="tier-enterprise" class="mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 bg-primary text-white shadow-sm hover:bg-primary focus-visible:outline-primary">Get started today</a>
+                <x-primary-link text="Get started today" :link="route('register')" class="w-full block text-center mt-8" aria-describedby="tier-enterprise" />
             </div>
 
         </div>
@@ -207,7 +227,7 @@
                 Reach out here 👉 <a href="mailto:hello@lemonbestie.com" class="font-semibold hover:underline">hello@lemonbestie.com</a>
             </div>
             <div>
-                Copyright © {{date('Y')}}.
+                Copyright © {{now()->format('Y')}}.
             </div>
         </div>
     </footer>
