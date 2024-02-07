@@ -3,7 +3,7 @@
         Membership
     @endslot
 
-    <div class="py-12">
+    <div class="py-6 md:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl font-bold tracking-widest text-gray-900 sm:text-5xl lg:col-span-2 xl:col-auto">
                 You're membership ran out
