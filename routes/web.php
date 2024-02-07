@@ -52,7 +52,9 @@ Route::get('/board/{slug}', function($slug, Request $request) {
         $websiteUrl = 'https://'.$board?->settings['website'];
     }
 
-    $testimonialSettings = $board?->settings['testimonials'];
+    $settings = $board?->settings;
+
+    $testimonialSettings = isset($settings['testimonials'])?$settings['testimonials']:[];
 
     $border = 'border';
     if(isset($testimonialSettings['border'])) {
@@ -98,7 +100,9 @@ Route::get('/iframe/{slug}', function($slug, Request $request) {
         ->get();
     $isIframe = true;
 
-    $testimonialSettings = $board?->settings['testimonials'];
+    $settings = $board?->settings;
+
+    $testimonialSettings = isset($settings['testimonials'])?$settings['testimonials']:[];
 
     $border = 'border';
     if(isset($testimonialSettings['border'])) {
@@ -211,6 +215,19 @@ Route::middleware(['isSubscribed'])->group(function () {
 
 
 Route::get('/membership', function() {
+    $user = auth()?->user();
+    $isTrialUser = false;
+    $isSubscribed = false;
+
+    if($user) {
+        $isSubscribed = $user?->subscribed();
+        $isTrialUser = $user->onTrial();
+    }
+
+    if($isSubscribed || $isTrialUser) {
+        return redirect()->route('dashboard');
+    }
+
     return view('membership');
 })
 ->middleware(['auth', 'verified'])

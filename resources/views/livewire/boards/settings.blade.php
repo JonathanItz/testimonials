@@ -40,7 +40,7 @@
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
                         file:text-sm file:font-semibold
-                        file:bg-primary file:text-white
+                        file:bg-primary file:text-slate-600
                         hover:file:bg-primary/80
                         "/>
                     </label>
@@ -213,7 +213,7 @@
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
             {{-- <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button> --}}
-            <button type="submit" class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Save</button>
+            <button type="submit" class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-neutral shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Save</button>
         </div>
     </form>
 </div>

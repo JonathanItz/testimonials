@@ -3,7 +3,7 @@
 
     @include('partials.head')
 
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased page-{{request()->route()->getName()}}">
         <div class="min-h-screen">
             <livewire:layout.navigation />
 

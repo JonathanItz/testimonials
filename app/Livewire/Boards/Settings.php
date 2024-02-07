@@ -37,7 +37,9 @@ class Settings extends Component
         $this->company = $board->name;
         $this->slug = $board->slug;
 
-        $testimonialSettings = $board?->settings['testimonials'];
+        $settings = $board?->settings;
+
+        $testimonialSettings = isset($settings['testimonials'])?$settings['testimonials']:[];
 
         if(isset($testimonialSettings['limit'])) {
             $this->testimonialLimit = $testimonialSettings['limit'];

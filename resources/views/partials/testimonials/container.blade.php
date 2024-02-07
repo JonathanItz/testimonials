@@ -29,7 +29,7 @@
                         @else
                             wire:navigate
                         @endif
-                        class="text-accent underline inline-flex items-center gap-1"
+                        class="text-neutral underline inline-flex items-center gap-1"
                     >
                         <span>here</span>
                         @if(isset($isIframe) && $isIframe)

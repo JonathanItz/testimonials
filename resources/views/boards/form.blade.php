@@ -1,18 +1,4 @@
 <x-board-layout>
-    @pushOnce('header-scripts')
-        <style>
-            body {
-                background-color: #ffffff;
-                opacity: 1;
-                background-image:  radial-gradient(#db82e5 0.6px, transparent 0.5px), radial-gradient(#db82e5 0.6px, #f9f9fb 0.5px);
-                background-size: 20px 20px;
-                background-position: 0 0,10px 10px;
-            }
-        </style>
-    @endPushOnce
-
-
-
     @if ($logoUrl)
         <div class="flex justify-center pt-8">
             @if ($websiteUrl)

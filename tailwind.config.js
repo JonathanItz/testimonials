@@ -18,10 +18,11 @@ export default {
 
             colors: {
                 "primary": "#FCEA2B",
-                "primary-hover": "#faed61",
-                "secondary": "#0ac5ff",
+                "primary-hover": "#fff9b3",
+                "secondary": "#00C2FF",
                 "accent": "#F5F1E3",
                 "neutral": "#050505",
+                "neutral-500": "#5c5c5c",
                 "base-100": "#f9f9fb",
                 "info": "#1b9aee",
                 "success": "#51ecd4",
