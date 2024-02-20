@@ -67,12 +67,22 @@
             <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
                 Take a look at our example board
             </p>
+
+            <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">
+                Customize your board to your design. Diverse styles to seamlessly integrate testimonials into your website's look and feel.
+            </p>
         </div>
         
         <div class="mt-8">
-            <script src="https://lemonbestie.com/assets/js/iframe.js"></script>
-            <iframe id="lemonbestieframe" src="https://lemonbestie.com/iframe/lemon-bestie-1" frameborder="0" scrolling="no" width="100%" style="width: calc(100% + 2rem);margin-left: -1rem;" ></iframe>
-            <script type="text/javascript">iFrameResize({log: false, checkOrigin: false}, "#lemonbestieframe");</script>
+            @production
+                <script src="https://lemonbestie.com/assets/js/iframe.js"></script>
+                <iframe id="lemonbestieframe" src="https://lemonbestie.com/iframe/lemon-bestie-1" frameborder="0" scrolling="no" width="100%" style="width: calc(100% + 2rem);margin-left: -1rem;" ></iframe>
+                <script type="text/javascript">iFrameResize({log: false, checkOrigin: false}, "#lemonbestieframe");</script>
+            @else
+                <script src="https://lemonbestie.test/assets/js/iframe.js"></script>
+                <iframe id="lemonbestieframe" src="https://lemonbestie.test/iframe/lemon-bestie" frameborder="0" scrolling="no" width="100%" style="width: calc(100% + 2rem);margin-left: -1rem;" ></iframe>
+                <script type="text/javascript">iFrameResize({log: false, checkOrigin: false}, "#lemonbestieframe");</script>
+            @endproduction
         </div>
 
         <div class="text-right text-xs">
