@@ -1,5 +1,5 @@
 <x-frame-layout>
-    <div class="px-4 pt-4 pb-8 min-h-[4rem] h-full">
+    <div class="px-4 min-h-[4rem] h-full">
         @include('partials.testimonials.container')
     </div>
 </x-frame-layout>
