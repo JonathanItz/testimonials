@@ -2,7 +2,10 @@
     <div class="flex gap-4">
         <div class="shrink-0">
             <img
-            src="{{$testimonail->image_to_use}}"
+            src="@php
+            $nameUrl = rawurlencode($testimonail->full_name);
+            echo $testimonail?->image_to_use ?: "https://ui-avatars.com/api/?name=$nameUrl"
+            @endphp"
             alt="User profile picture"
             class="rounded-full w-10"
             >

@@ -61,10 +61,28 @@
         <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32"></div>
         </div>
     </div>
+
+    {{-- <div class="mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
+        <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
+            <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Take a look at our example board
+            </p>
+        </div>
+        
+        <div class="mt-8">
+            <script src="https://lemonbestie.test/assets/js/iframe.js"></script>
+            <iframe id="lemonbestieframe" src="https://lemonbestie.test/iframe/lemon-bestie" frameborder="0" scrolling="no" width="100%" style="width: calc(100% + 2rem);margin-left: -1rem;" ></iframe>
+            <script type="text/javascript">iFrameResize({log: false, checkOrigin: false}, "#lemonbestieframe");</script>
+        </div>
+
+        <div class="text-right text-xs">
+            * these are not real testimonials and only displays the board design
+        </div>
+    </div> --}}
   
     <div class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl" aria-hidden="true">
-        <div class="mx-auto aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        <div class="mx-auto aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-secondary to-primary opacity-30" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
         </div>
         <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
         <h2 class="text-base font-semibold leading-7 text-neutral-500">Pricing</h2>
@@ -122,12 +140,12 @@
                     </svg>
                     Embed testimonials on your website
                 </li>
-                <li class="flex gap-x-3">
+                {{-- <li class="flex gap-x-3">
                     <svg class="h-6 w-5 flex-none text-primary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
                     </svg>
                     Customize board
-                </li>
+                </li> --}}
                 <li class="flex gap-x-3">
                     <svg class="h-6 w-5 flex-none text-primary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />

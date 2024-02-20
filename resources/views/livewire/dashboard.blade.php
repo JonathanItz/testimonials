@@ -143,7 +143,7 @@
                 <div x-show="expanded" x-collapse x-cloak>
                     <pre class="px-6 text-left overflow-x-auto w-full text-sm bg-neutral text-white pb-6"><code class="w-full text-sm" x-ref="iframeCode">
 &lt;script src="{{route('home')}}/assets/js/iframe.js">&lt;/script&gt;
-&lt;iframe id="lemonbestieframe" src="{{route('board.iframe', [$slug])}}" frameborder="0" scrolling="no" width="100%"&gt;&lt;/iframe&gt;
+&lt;iframe id="lemonbestieframe" src="{{route('board.iframe', [$slug])}}" frameborder="0" scrolling="no" width="100%" style="width: calc(100% + 2rem);margin-left: -1rem;" &gt;&lt;/iframe&gt;
 &lt;script type="text/javascript"&gt;iFrameResize({log: false, checkOrigin: false}, "#lemonbestieframe");&lt;/script&gt;
 </code></pre>
                 <div class="py-4 px-6 flex gap-4 flex-col md:flex-row md:items-center justify-between">

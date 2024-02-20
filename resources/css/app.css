@@ -32,28 +32,13 @@ img[alt]:after {
     content: attr(alt);
 }
 
-.page-dashboard, .page-board\.settings, .page-board\.form {
+.page-dashboard,
+.page-board\.settings,
+.page-board\.form,
+.page-profile {
     background-color: #ffffff;
     opacity: 1;
     background-image:  radial-gradient(#00C2FF 0.6px, transparent 0.5px), radial-gradient(#00C2FF 0.6px, #f9f9fb 0.5px);
     background-size: 20px 20px;
     background-position: 0 0,10px 10px;
 }
-
-/* #lb-container {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    background-color: #db82e5;
-    border-radius: 1.5rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-} */
-
-/* #lb-container svg {
-    transition: opacity 0.3s ease-in-out;
-}
-
-#lb-container.lb-highlighted svg {
-    opacity: 0;
-} */
