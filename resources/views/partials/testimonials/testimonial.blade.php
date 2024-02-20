@@ -22,11 +22,17 @@
                         <span>
                             {{$testimonail->job_position}}
                         </span>
+                    @endif
+                    
+                    @if ($testimonail->job_position && $testimonail->company)
                         <span class="bg-gray-600 inline-block rounded-full h-0.5 w-0.5 mx-1 relative -top-0.5"></span>
                     @endif
-                    <span>
-                        {{$testimonail->company}}
-                    </span>
+
+                    @if ($testimonail?->company)
+                        <span>
+                            {{$testimonail->company}}
+                        </span>
+                    @endif
                 </div>
             @endif
         </div>
